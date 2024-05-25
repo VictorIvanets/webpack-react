@@ -1,0 +1,125 @@
+@font-face 
+    font-family: "Roboto"
+    src: url("./Roboto.ttf") format("truetype")
+    font-weight: normal
+    font-style: normal
+@font-face 
+    font-family: "Robotobold"
+    src: url("./Robotobold.ttf") format("truetype")
+    font-weight: normal
+    font-style: normal
+@font-face 
+    font-family: "Robotothin"
+    src: url("./Robotothin.ttf") format("truetype")
+    font-weight: normal
+    font-style: normal
+    
+$colorMain: rgb(0, 49, 53)
+$colorLight: rgb(0, 177, 138)
+$colorDeepLight: rgba(0, 250, 250, 0.349)
+$colorDark: rgb(0, 51, 47)
+
+$font-size-m: 1.6rem
+$font-line-m: 2.4rem
+$font-size-l: 2.4rem
+$font-line-l: 3.2rem
+$font-main: "Roboto", Arial
+
+
+
+html
+    font-size: 62.5%
+    background: #e0f4ff
+    font-family: "Roboto"
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+p
+    font-size: 1.2rem
+    
+h1
+    font-size: 3rem
+h2
+    font-size: 2rem
+h3 
+    font-size: 1.5rem
+
+.fontsize2rem
+    font-size: 2rem
+
+
+.light
+    color: $colorLight
+    a
+        color: $colorLight
+    .active
+        color: red
+
+.dark
+    color: $colorDark
+    a
+        color: $colorDark
+    .active
+        color: red
+
+
+.white
+    color: rgb(255, 255, 255)
+.taright
+    text-align: right
+.taleft
+    text-align: left
+.tacenter
+    text-align: center
+.marginbottom5
+    margin-bottom: 5rem
+.marginbottom2
+    margin-bottom: 2rem
+.margin1
+    margin: 1rem
+a
+    text-decoration: none
+    font-size: 1.5rem
+
+
+
+.upper
+    text-transform: uppercase
+button
+    border: none
+    padding: 0.5rem
+
+
+
+// .preloaderbox
+//     height: 30vh
+//     position: relative  
+//     top: 20vh  
+// .preloader
+//     position: absolute
+//     top: 90%
+//     left: 50%
+//     transform: translate(-50%, -50%)
+//     display: inline-block
+//     width: 150px
+//     height: 150px
+//     &__text
+//         text-align: center   
+
+// .preloader:after
+//     content: ""
+//     display: block
+//     width: 120px
+//     height: 120px
+//     margin: 8px
+//     border-radius: 50%
+//     border: 10px solid transparent
+//     border-color: $colorLight transparent $colorLight transparent
+//     animation: lds-dual-ring 1.2s linear infinite
+// @keyframes lds-dual-ring
+//     0% 
+//         transform: rotate(0deg)
+//     100% 
+//         transform: rotate(360deg)
