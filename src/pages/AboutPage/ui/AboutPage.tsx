@@ -1,8 +1,14 @@
+import { useTheme } from "app/Providers/Theme/useTheme"
+import { className } from "shared/lib/helpers/classNames/classNames"
+
 export function AboutPage(){
 
- return <div className="about">
+   const {theme} = useTheme()
 
-    <h1 className="margin1">About</h1>
+
+   return <div className={className('about', {aboutdarks: (theme === "dark" ? true : false)}, [])}>
+
+    <h1 className={className('margin1', {abouth1dark: (theme === "dark" ? true : false)}, [])}>About</h1>
  
  </div>
 }
