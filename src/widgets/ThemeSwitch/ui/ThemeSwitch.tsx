@@ -15,7 +15,7 @@ export function ThemeSwitch () {
         return ( <div>
             <Button 
                 className= {className('headerbtn', {headerbtndark: (theme === "dark" ? true : false)}, [])}
-                onClick={toggleTheme}> {theme === "dark" ? <Night className='svg'/> : <Day className='svg'/>} 
+                onClick={toggleTheme}> {theme === "dark" ? <div className='svgbox'><Night className='svg'/></div> : <div className='svgbox'><Day className='svg'/></div>} 
             </Button>
 
             </div>

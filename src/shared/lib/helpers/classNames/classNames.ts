@@ -14,3 +14,5 @@ return [
 ].join(' ')
 
 }
+
+export default className
