@@ -25,11 +25,18 @@ const config: Config = {
     "\\\\node_modules\\\\"
   ],
   rootDir: '../../',
-  testMatch: [
-    "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[tj]s?(x)"
-    // `<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)`
+
+  modulePaths: [
+    '<rootDir>src'
   ],
+
+  testMatch: [
+    // "**/__tests__/**/*.[jt]s?(x)",
+    // "**/?(*.)+(spec|test).[tj]s?(x)"
+    `<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)`
+  ],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts']
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
   

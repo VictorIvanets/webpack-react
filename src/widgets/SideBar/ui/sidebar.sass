@@ -7,8 +7,26 @@
     bottom: 0
     left: 0
     display: flex
-    justify-content: flex-end
+    justify-content: flex-start
     transition: All 0.3s
+
+
+
+
+.sidebarbox
+    padding: 1rem
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    
+    &__navbar
+        display: flex
+        flex-direction: column
+
+    &__switch
+        display: flex
+
 .sidebardark
     background: #00131d
 
@@ -16,11 +34,11 @@
     left: -19rem
     transition: All 0.3s
 .sidebtn
-    position: relative
+    position: absolute
     width: max-content
     height: 2.5rem
-    top: 55px
-    right: -15px
+    bottom: 25px
+    right: -90px
     background: #00639c
     color: white
     transition: All 0.3s
@@ -28,5 +46,5 @@
     background: #002133
 .sidebtn90
     transform: rotate(90deg)
-    right: -43px
     transition: All 0.3s
+    right: -115px

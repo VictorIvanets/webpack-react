@@ -9,6 +9,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorBoundarie } from 'app/Providers/Error/ErrorBoundarie';
 
 
+
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
   <React.StrictMode>

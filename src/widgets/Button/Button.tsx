@@ -1,14 +1,8 @@
 import {ButtonHTMLAttributes, FC} from 'react';
-import { className } from 'shared/lib/helpers/classNames/classNames';
-import { useTheme } from 'app/Providers/Theme/useTheme';
-
-import {ReactNode } from 'react';
 
 
 export enum ThemeButon {
     CLEAR = 'clearbtn',
-
-
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -37,4 +31,6 @@ export const Button: FC<ButtonProps> = (props) => {
     );
 
 };
+
+export default Button
 
