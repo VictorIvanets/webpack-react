@@ -6,10 +6,20 @@ type ContextProviderProps = {
     children?: ReactNode
 }
 
+interface ThemeProviderProps {
+    initialTheme?: Theme
+    children: ReactNode
+}
 
-const ThemeProvider = ({ children }: ContextProviderProps) => {
 
-    const [theme, setTheme] = useState<Theme>(defaultTheme)
+const ThemeProvider: FC<ThemeProviderProps> = (props) => {
+
+    const {
+        initialTheme,
+        children
+    } = props
+
+    const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme)
   
 
     const defaulProps = useMemo(()=>({

@@ -25,7 +25,7 @@ root.render(
 
         </ThemeProvider>
       
-        </ErrorBoundary>;  
+        </ErrorBoundary>
 
     </BrowserRouter>
     

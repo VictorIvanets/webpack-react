@@ -3,9 +3,10 @@ import { className } from "../shared/lib/helpers/classNames/classNames"
 import { AppRouter } from "./Providers/router"
 import { Navbar } from "widgets/navbar/index"
 import { SideBar } from "widgets/SideBar/index"
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { PreLoader } from "widgets/PreLoader/index"
 import LeftComponent from "pages/LeftComponent/LeftComponent"
+import Modal from "widgets/Modal/Modal"
 
 
 
@@ -20,8 +21,6 @@ const {theme} = useTheme()
         
 //     }
 // }, [])
-
-
 
 
     return <div className={className('app', {}, [theme])}> 

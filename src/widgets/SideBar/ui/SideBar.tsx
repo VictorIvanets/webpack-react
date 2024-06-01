@@ -20,7 +20,8 @@ export const SideBar = () => {
 
     return (
         <div className={className('sidebar', {sidebardark: (theme === "dark" ? true : false), collaps: (collaps === true ? true : false)}, [])}>
-            <div className='sidebarbox'>
+            
+        <div className='sidebarbox'>
         
         
         <div className='sidebarbox__navbar'>
@@ -39,6 +40,7 @@ export const SideBar = () => {
             <button className={className('sidebtn', {sidebarbtndark: (theme === "dark" ? true : false), sidebtn90: (collaps === true ? true : false)}, [])}
             onClick={toggle}>{collaps ? t("SIDEBAR"):t('TO HIDE')}</button>
             </div>
+
         </div>
     );
 };
