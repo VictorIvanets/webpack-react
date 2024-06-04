@@ -7,7 +7,7 @@ import Logolight from 'shared/assets/Logoapp_light.svg'
 import Logodark from 'shared/assets/Logoapp_dark.svg'
 import Modal from 'widgets/Modal/Modal';
 import { className } from "shared/lib/helpers/classNames/classNames"
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Button from 'widgets/Button/Button';
 import { Auth } from 'widgets/Auth/index';
 
@@ -23,6 +23,26 @@ export const Navbar = () => {
         setIsAuthModal(!isAuthModal)
     }, [isAuthModal])
 
+    const [userOut, setUserOut] = useState()
+
+    useEffect(()=>{
+        setUserOut(JSON.parse(localStorage.getItem('form')))
+    }, [isAuthModal])
+
+    function removUser(){
+        localStorage.removeItem('form')
+        setUserOut(null)
+    }
+
+
+    const user = () =>{
+    if (userOut) {
+        return `user: ${userOut[0]}` 
+    } else { return '' }
+    }
+
+
+
 
     return (
     <div className="header">
@@ -30,7 +50,21 @@ export const Navbar = () => {
             <div className="logo">{theme === "dark" ? <Logolight className='logosvg'/>:<Logodark className='logosvg'/>}</div>
             <NavLink className="margin1" to="/">{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to="/about">{t("Про сайт")}</NavLink>
-            <Button className ="modalbtn" onClick={()=>{setIsAuthModal(!isAuthModal)}}>{t("Зайти")}</Button>
+            <h2 style={{marginLeft:"10px", marginRight:"10px"}}>{user()}</h2>
+            <Button 
+            className ="modalbtn" 
+            onClick={
+
+                !userOut ? 
+                ()=>{setIsAuthModal(!isAuthModal)}
+                 : ()=>{removUser()}
+                
+                }>
+                
+                {!userOut ? t("Зайти") : t("Вийти")}
+                
+                </Button>
+                
         </div>
         <div className='switch'>
             <LangSwitch/>
@@ -44,7 +78,7 @@ export const Navbar = () => {
             onClose={()=>{onToggleModal()}}
             >
                 
-            <Auth/>
+            <Auth onToggleModal={onToggleModal}/>
 
         </Modal>
     </div>

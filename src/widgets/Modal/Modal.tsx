@@ -65,7 +65,9 @@ export const Modal = (props: ModelProps) => {
     
     return (
     <Portal>
-        <div className={className} onClick={closeHandler}>
+        <div className={className} 
+        // onClick={closeHandler}
+        >
         
             <div className={themadd} onClick={onContentClick}>
         
