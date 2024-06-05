@@ -1,6 +1,9 @@
 import { useTheme } from "app/Providers/Theme/useTheme"
+import { isUserActions } from "entities/AuthSlise";
+import { userActions } from "entities/UserSlise";
 import { FormEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next"
+import { useDispatch, useSelector } from "react-redux";
 import { className } from "shared/lib/helpers/classNames/classNames"
 import Button from "widgets/Button/Button";
 import { Input } from "widgets/Input/index";
@@ -23,21 +26,13 @@ export const Auth = (props: any) => {
 
     const {theme} = useTheme()
     const {t} = useTranslation()
-
-
-    const [substate, setSubstate] = useState([])
-    // console.log(substate)
-    //UPLOAD DATA
-    
-
-
     const [validForm, setValidForm] = useState(false)
+    const dispatch = useDispatch()
 
 
     const submit = (e: FormEvent) => {
         e.preventDefault();
         const target = e.target as typeof e.target & LoginForm
-        setSubstate([target.name.value, target.email.value, target.tel.value])
 
         if (target.name.value.length <=3 
             || !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.email.value))
@@ -46,6 +41,10 @@ export const Auth = (props: any) => {
             setValidForm(true)
         } else {
             localStorage.setItem('form', JSON.stringify([target.name.value, target.email.value, target.tel.value]))
+            dispatch(userActions.addUserName(target.name.value))
+            dispatch(userActions.addUserMail(target.email.value))
+            dispatch(userActions.addUserTel(target.tel.value))
+            dispatch(isUserActions.isUserAuth(true))
             setValidForm(false)
             props.onToggleModal()
             target.name.value = ''

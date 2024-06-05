@@ -10,38 +10,48 @@ import { className } from "shared/lib/helpers/classNames/classNames"
 import { useCallback, useEffect, useState } from 'react';
 import Button from 'widgets/Button/Button';
 import { Auth } from 'widgets/Auth/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { isUserActions } from 'entities/AuthSlise';
+import { getUserName } from 'entities/UserSelector';
+import { userActions } from 'entities/UserSlise';
 
 export const Navbar = () => {
 
     const {theme} = useTheme()
-
     const {t} = useTranslation()
-
     const [isAuthModal, setIsAuthModal] = useState(false)
+    const dispatch = useDispatch()
+    const userName = useSelector(getUserName)
+
 
     const onToggleModal = useCallback(()=>{
         setIsAuthModal(!isAuthModal)
     }, [isAuthModal])
 
-    const [userOut, setUserOut] = useState()
+    const [userOut, setUserOut] = useState("")
 
     useEffect(()=>{
-        setUserOut(JSON.parse(localStorage.getItem('form')))
-    }, [isAuthModal])
+        setUserOut(userName)
+        }, [isAuthModal, userName]
+    )
 
     function removUser(){
         localStorage.removeItem('form')
         setUserOut(null)
+        dispatch(isUserActions.isUserAuth(false))
+        dispatch(userActions.addUserName(""))
+        dispatch(userActions.addUserMail(""))
+        dispatch(userActions.addUserTel(""))
     }
 
 
     const user = () =>{
     if (userOut) {
-        return `user: ${userOut[0]}` 
+        return userOut
     } else { return '' }
     }
 
-
+  
 
 
     return (

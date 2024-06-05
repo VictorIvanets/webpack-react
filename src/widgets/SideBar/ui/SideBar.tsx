@@ -1,11 +1,13 @@
 import { className } from 'shared/lib/helpers/classNames/classNames';
 import { useTheme } from 'app/Providers/Theme/useTheme';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { LangSwitch } from 'widgets/LangSwitch';
 import { ThemeSwitch } from 'widgets/ThemeSwitch';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { useSelector } from 'react-redux';
+import { getUserName, getUserTel, getUserMail, isUser } from 'entities/UserSelector';
 
 
 export const SideBar = () => {
@@ -13,6 +15,16 @@ export const SideBar = () => {
     const {theme} = useTheme()
     const [collaps, setCollaps] = useState(true)
     const {t} = useTranslation()
+    const userTel = useSelector(getUserTel)
+    const userMail = useSelector(getUserMail)
+    const userName = useSelector(getUserName)
+    const isUserIn = useSelector(isUser)
+    const [isUserBar, setIsUserBar] = useState(true)
+
+
+    useEffect(()=>{
+        setIsUserBar(!isUserBar)
+    }, [isUserIn])
 
     const toggle = () => {
         setCollaps(!collaps)
@@ -28,6 +40,12 @@ export const SideBar = () => {
             <NavLink className="margin1" to={RoutePath.main}>{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to={RoutePath.about}>{t("Про сайт")}</NavLink>
             <NavLink className="margin1" to={RoutePath.load}>{t("Прелоадер")}</NavLink>
+        </div>
+
+        <div>
+            <h3>{isUserBar ? userName : ""}</h3>
+            <h3>{isUserBar ? userTel : ""}</h3>
+            <h3>{isUserBar ? userMail : ""}</h3>
         </div>
 
         <div className='sidebarbox__switch'>
