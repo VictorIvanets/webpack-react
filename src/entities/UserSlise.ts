@@ -7,10 +7,12 @@ export interface userSchema {
 }
 
 
+
   const initialState: userSchema = {
     name: "",
     email: "",
-    tel: null
+    tel: null,
+  
 }
   
   export const userSlise = createSlice({

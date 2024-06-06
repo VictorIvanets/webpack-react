@@ -1,4 +1,5 @@
 import { useTheme } from "app/Providers/Theme/useTheme"
+import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { className } from "shared/lib/helpers/classNames/classNames"
 
@@ -6,6 +7,22 @@ export function AboutPage(){
 
    const {theme} = useTheme()
    const {t} = useTranslation()
+
+
+useEffect(()=>{
+      fetch(`http://localhost:8000/posts/`) 
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      
+},[]);
+
+
+
 
 
    return <div className={className('about', {aboutdarks: (theme === "dark" ? true : false)}, [])}>
@@ -18,6 +35,8 @@ export function AboutPage(){
             <p className="about__text_p">{t("моя робота2")}</p>
             <p className="about__text_p">{t("моя робота3")}</p>
             </div>
+
+      
 
 
  </div>

@@ -12,7 +12,7 @@ export function createReduxStore(initialState: StateSchema){
             user: userReduser,
             isuser: isUserReduser
         },
-        devTools: __IS_DEV__,
+        devTools: true, //__IS_DEV__,
         preloadedState: initialState
       })
 
