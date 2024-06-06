@@ -7,49 +7,26 @@ import Logolight from 'shared/assets/Logoapp_light.svg'
 import Logodark from 'shared/assets/Logoapp_dark.svg'
 import Modal from 'widgets/Modal/Modal';
 import { className } from "shared/lib/helpers/classNames/classNames"
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import Button from 'widgets/Button/Button';
 import { Auth } from 'widgets/Auth/index';
-import { useDispatch, useSelector } from 'react-redux';
-import { isUserActions } from 'entities/AuthSlise';
-import { getUserName } from 'entities/UserSelector';
-import { userActions } from 'entities/UserSlise';
+import { LoginModal } from 'features/AuthByUserName/LoginModal';
+
 
 export const Navbar = () => {
 
     const {theme} = useTheme()
     const {t} = useTranslation()
     const [isAuthModal, setIsAuthModal] = useState(false)
-    const dispatch = useDispatch()
-    const userName = useSelector(getUserName)
 
 
-    const onToggleModal = useCallback(()=>{
-        setIsAuthModal(!isAuthModal)
-    }, [isAuthModal])
+    const onClose = useCallback(()=>{
+        setIsAuthModal(false)
+    }, [])
 
-    const [userOut, setUserOut] = useState("")
-
-    useEffect(()=>{
-        setUserOut(userName)
-        }, [isAuthModal, userName]
-    )
-
-    function removUser(){
-        localStorage.removeItem('form')
-        setUserOut(null)
-        dispatch(isUserActions.isUserAuth(false))
-        dispatch(userActions.addUserName(""))
-        dispatch(userActions.addUserMail(""))
-        dispatch(userActions.addUserTel(""))
-    }
-
-
-    const user = () =>{
-    if (userOut) {
-        return userOut
-    } else { return '' }
-    }
+    const onShow = useCallback(()=>{
+        setIsAuthModal(true)
+    }, [])
 
   
 
@@ -60,18 +37,11 @@ export const Navbar = () => {
             <div className="logo">{theme === "dark" ? <Logolight className='logosvg'/>:<Logodark className='logosvg'/>}</div>
             <NavLink className="margin1" to="/">{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to="/about">{t("Про сайт")}</NavLink>
-            <h2 style={{marginLeft:"10px", marginRight:"10px"}}>{user()}</h2>
             <Button 
             className ="modalbtn" 
-            onClick={
-
-                !userOut ? 
-                ()=>{setIsAuthModal(!isAuthModal)}
-                 : ()=>{removUser()}
+            onClick={onShow}>
                 
-                }>
-                
-                {!userOut ? t("Зайти") : t("Вийти")}
+                {t("Зайти")}
                 
                 </Button>
                 
@@ -81,16 +51,10 @@ export const Navbar = () => {
             <ThemeSwitch/>
         </div>
 
-        <Modal
-            className={className('modal', {
-            opened: isAuthModal === true ? true : false}, [])}
-            isOpen={isAuthModal}
-            onClose={()=>{onToggleModal()}}
-            >
-                
-            <Auth onToggleModal={onToggleModal}/>
-
-        </Modal>
+        <LoginModal 
+        isOpen = {isAuthModal}
+        onClose={onClose}
+        />
     </div>
     );
 };

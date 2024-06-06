@@ -10,5 +10,11 @@
     "SIDEBAR": "SIDEBAR",
     "TO HIDE": "TO HIDE",
     "404": "404 NOT FOUND",
-    "наголовну": "main page"
+    "наголовну": "main page",
+    "Прелоадер": "load",
+    "modal": "modal",
+    "Зайти": "Enter",
+    "УВІЙТИ": "ENTER",
+    "Вийти": "Exit",
+    "пароль": "invalid login or password"
 }

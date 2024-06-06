@@ -13,10 +13,10 @@ useEffect(()=>{
       fetch(`http://localhost:8000/posts/`) 
           .then(response => response.json())
           .then(data => {
-            console.log(data);
+            // console.log(data);
           })
           .catch(err => {
-              console.log(err);
+            //   console.log(err);
           });
       
 },[]);

@@ -15,5 +15,6 @@
     "modal": "modal",
     "Зайти": "Enter",
     "УВІЙТИ": "ENTER",
-    "Вийти": "Exit"
+    "Вийти": "Exit",
+    "пароль": "invalid login or password"
 }

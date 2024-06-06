@@ -1,33 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+
+
+export interface User {
+  id?: string,
+  username?: string,
+  password?: string,
+}
 
 export interface userSchema {
-  name: string,
-  email: string,
-  tel: number | undefined
+  authData?: User
 }
 
 
 
   const initialState: userSchema = {
-    name: "",
-    email: "",
-    tel: null,
-  
+
 }
   
   export const userSlise = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
-        addUserName: (state, action) => {
-            state.name = action.payload
-        },
-        addUserMail: (state, action) => {
-            state.email = action.payload
-        },
-        addUserTel: (state, action) => {
-            state.tel = action.payload
-      },
+        setAuthData: (state, action: PayloadAction<User>) => {
+          state.authData = action.payload
+        }
     },
   })
 
