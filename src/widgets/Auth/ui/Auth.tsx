@@ -31,12 +31,6 @@ export type AppStore = Omit<Store<RootState, Action>, "dispatch"> & {
     dispatch: AppThunkDispatch;
   };
 
-
-
-
-
-
-
 export const Auth = memo(({isOpen}: any) => {
     
     const useAppDispatch = useDispatch<AppThunkDispatch>();
@@ -44,13 +38,23 @@ export const Auth = memo(({isOpen}: any) => {
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null);
+    const authData = useSelector((state: StateSchema) => state.user.authData)
+
+
     useEffect(()=>{
         inputRef.current.focus();
     }, [isOpen])
 
- 
+    const {username, password, isLoading} = useSelector((state: StateSchema) => state.login)
     const [validForm1, setValidForm1] = useState(false)
     const [validForm2, setValidForm2] = useState(false)
+    const [valueName, setValueName] = useState('')
+    const [valuePass, setValuePass] = useState('')
+
+    useEffect(()=>{
+        setValueName(username)
+        setValuePass(password)
+    },[username, password])
 
 
     const onCangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) =>{
@@ -60,10 +64,10 @@ export const Auth = memo(({isOpen}: any) => {
 
     const onCangePass = useCallback((e: React.ChangeEvent<HTMLInputElement>) =>{
         dispatch(loginActions.setUserPass(e.target.value))
-        e.target.value.length <= 3 ? setValidForm2(true) : setValidForm2(false)
+        e.target.value.length <= 2 ? setValidForm2(true) : setValidForm2(false)
     },[dispatch])
 
-    const {username, password, isLoading} = useSelector((state: StateSchema) => state.login)
+    
 
     // console.log(username)
     // console.log(password)
@@ -71,6 +75,10 @@ export const Auth = memo(({isOpen}: any) => {
     const onLoginClick = useCallback(()=> {
         // dispatch(LoginByUserName())
         useAppDispatch(LoginByUserName({username, password}))
+
+            setValueName("")
+            setValuePass("")
+
 
     },[useAppDispatch, username, password])
   
@@ -90,7 +98,7 @@ export const Auth = memo(({isOpen}: any) => {
             type="text" 
             placeholder="login"
             ref={inputRef}
-            value={username}
+            value={valueName}
             onChange={onCangeName}
             className={className('', {inputdark: (theme === "dark" ? true : false), invalidinput1: (validForm1 === false ? false : true)}, [])}
             />
@@ -99,7 +107,7 @@ export const Auth = memo(({isOpen}: any) => {
             name="password" 
             type="text" 
             placeholder="password"
-            value={password}
+            value={valuePass}
             onChange={onCangePass}
             className={className('', {inputdark: (theme === "dark" ? true : false), invalidinput2: (validForm2 === false ? false : true)}, [])}
             />

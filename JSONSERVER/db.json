@@ -23,6 +23,11 @@
       "id": 1,
       "username": "admin",
       "password": "123"
+    },
+    {
+      "id": 2,
+      "username": "victor",
+      "password": "5555"
     }
   ],
   "profile": { "name": "typicode" }

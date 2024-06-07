@@ -7,20 +7,19 @@ import { Suspense, useEffect, useState } from "react"
 import { PreLoader } from "widgets/PreLoader/index"
 import LeftComponent from "pages/LeftComponent/LeftComponent"
 import Modal from "widgets/Modal/Modal"
+import { useDispatch } from "react-redux"
+import { userActions } from "entities/UserSlise"
 
 
 
 export function App() {
 
 const {theme} = useTheme()
+const dispatch = useDispatch()
 
-// useEffect(()=>{
-//     if (Math.random()< 0.5){
-
-//         throw new Error("ОШИБКА")
-        
-//     }
-// }, [])
+useEffect(()=>{
+    dispatch(userActions.initAuthData())
+}, [dispatch])
 
 
     return <div className={className('app', {}, [theme])}> 

@@ -23,7 +23,20 @@ export interface userSchema {
     reducers: {
         setAuthData: (state, action: PayloadAction<User>) => {
           state.authData = action.payload
+        },
+        initAuthData: (state) => {
+          const user = localStorage.getItem("user")
+          if(user){
+            state.authData = JSON.parse(user)
+          }
+        },
+        logout: (state) => {
+
+            state.authData = undefined
+            localStorage.removeItem("user")
+          
         }
+
     },
   })
 

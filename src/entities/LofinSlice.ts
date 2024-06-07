@@ -20,6 +20,10 @@ import { LoginByUserName } from 'features/Servises/LoginByUserName'
         },
         setUserPass: (state, action: PayloadAction<string>)=>{
             state.password = action.payload
+        },
+        clearLoginState: (state) =>{
+            state.username = ''
+            state.password = ''
         }
     },
     extraReducers: (builder) => {

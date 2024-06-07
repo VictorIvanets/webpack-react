@@ -7,10 +7,14 @@ import Logolight from 'shared/assets/Logoapp_light.svg'
 import Logodark from 'shared/assets/Logoapp_dark.svg'
 import Modal from 'widgets/Modal/Modal';
 import { className } from "shared/lib/helpers/classNames/classNames"
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Button from 'widgets/Button/Button';
 import { Auth } from 'widgets/Auth/index';
 import { LoginModal } from 'features/AuthByUserName/LoginModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { StateSchema } from 'app/Providers/StoreProvider/config/StateSchema';
+import { userActions } from 'entities/UserSlise';
+import { loginActions } from 'entities/LofinSlice';
 
 
 export const Navbar = () => {
@@ -18,7 +22,9 @@ export const Navbar = () => {
     const {theme} = useTheme()
     const {t} = useTranslation()
     const [isAuthModal, setIsAuthModal] = useState(false)
-
+    const authData = useSelector((state: StateSchema) => state.user.authData)
+    const userName = useSelector((state: StateSchema) => state.login.username)
+    const dispatch = useDispatch()
 
     const onClose = useCallback(()=>{
         setIsAuthModal(false)
@@ -28,6 +34,16 @@ export const Navbar = () => {
         setIsAuthModal(true)
     }, [])
 
+    const onLogOut = useCallback(()=>{
+        dispatch(userActions.logout())
+        dispatch(loginActions.clearLoginState())
+    }, [])
+
+    useEffect(()=>{
+        if(authData) {
+            setIsAuthModal(false)
+        }
+    },[authData])
   
 
 
@@ -35,17 +51,28 @@ export const Navbar = () => {
     <div className="header">
         <div className='navbar'>
             <div className="logo">{theme === "dark" ? <Logolight className='logosvg'/>:<Logodark className='logosvg'/>}</div>
-            <NavLink className="margin1" to="/">{t("Головна сторінка")}</NavLink>
-            <NavLink className="margin1" to="/about">{t("Про сайт")}</NavLink>
+
+            
+            {!authData ?
             <Button 
             className ="modalbtn" 
-            onClick={onShow}>
-                
-                {t("Зайти")}
-                
-                </Button>
+            onClick={onShow}> {t("Зайти")}
+            </Button> 
+            : <>
+            <NavLink className="margin1" to="/">{t("Головна сторінка")}</NavLink>
+            <NavLink className="margin1" to="/about">{t("Про сайт")}</NavLink>
+            <h3 className='navbarusername'>{userName.toUpperCase()}</h3>
+            <Button 
+            className ="modalbtnOut" 
+            onClick={onLogOut}> {t("Вийти")}
+            </Button> 
+            </>
+            }
+
                 
         </div>
+
+
         <div className='switch'>
             <LangSwitch/>
             <ThemeSwitch/>
