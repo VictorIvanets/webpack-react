@@ -8,7 +8,8 @@ import { LoginByUserName } from 'features/Servises/LoginByUserName'
   const initialState: LoginSchema = {
     username: '',
     password: '',
-    isLoading: false
+    isLoading: false,
+    error: ''
     }
   
   export const LoginSlise = createSlice({
@@ -24,6 +25,9 @@ import { LoginByUserName } from 'features/Servises/LoginByUserName'
         clearLoginState: (state) =>{
             state.username = ''
             state.password = ''
+        },
+        loginError: (state, action: PayloadAction<string>)=>{
+            state.error = action.payload
         }
     },
     extraReducers: (builder) => {

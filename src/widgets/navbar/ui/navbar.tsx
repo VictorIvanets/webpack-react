@@ -37,7 +37,7 @@ export const Navbar = () => {
     const onLogOut = useCallback(()=>{
         dispatch(userActions.logout())
         dispatch(loginActions.clearLoginState())
-    }, [])
+    }, [dispatch])
 
     useEffect(()=>{
         if(authData) {
@@ -53,8 +53,8 @@ export const Navbar = () => {
             <div className="logo">{theme === "dark" ? <Logolight className='logosvg'/>:<Logodark className='logosvg'/>}</div>
 
             
-            {!authData ?
-            <Button 
+            {!authData 
+            ? <Button 
             className ="modalbtn" 
             onClick={onShow}> {t("Зайти")}
             </Button> 

@@ -31,10 +31,8 @@ export interface userSchema {
           }
         },
         logout: (state) => {
-
             state.authData = undefined
             localStorage.removeItem("user")
-          
         }
 
     },

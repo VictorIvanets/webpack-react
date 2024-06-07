@@ -45,16 +45,29 @@ export const Auth = memo(({isOpen}: any) => {
         inputRef.current.focus();
     }, [isOpen])
 
-    const {username, password, isLoading} = useSelector((state: StateSchema) => state.login)
+    const {username, password, isLoading, error} = useSelector((state: StateSchema) => state.login)
     const [validForm1, setValidForm1] = useState(false)
     const [validForm2, setValidForm2] = useState(false)
     const [valueName, setValueName] = useState('')
     const [valuePass, setValuePass] = useState('')
+    const [errorLogin, setErrorLogin] = useState(false)
 
     useEffect(()=>{
         setValueName(username)
         setValuePass(password)
     },[username, password])
+
+    useEffect(()=>{
+        if (error){
+            setErrorLogin(true)
+        }
+    },[error])
+
+    // console.log(error)
+    // console.log(username)
+    // console.log(password)
+    // console.log(isLoading)
+
 
 
     const onCangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) =>{
@@ -69,30 +82,29 @@ export const Auth = memo(({isOpen}: any) => {
 
     
 
-    // console.log(username)
-    // console.log(password)
+    
+  
 
     const onLoginClick = useCallback(()=> {
         // dispatch(LoginByUserName())
         useAppDispatch(LoginByUserName({username, password}))
-
-            setValueName("")
-            setValuePass("")
-
-
+        setErrorLogin(false)
+            // setValuePass("")
     },[useAppDispatch, username, password])
   
   
     return (
         <div className={className('autbox', {
-            autboxdark: (theme === "dark" ? true : false)}, [])}>
+            autboxdark: (theme === "dark" ? true : false), invalid: (errorLogin === true ? true : false)}, [])}>
         <div className='autbox__text'>
             <h2>{t("Зайти")}</h2>
         </div>
         <div 
         // onSubmit={submit} 
-        className="autbox__inputs">
-
+        className={className('autbox__inputs', {}, [])}
+        
+        >
+            {errorLogin ? <h3>{t("пароль")}</h3>: ""}
             <Input  
             name="login" 
             type="text" 
