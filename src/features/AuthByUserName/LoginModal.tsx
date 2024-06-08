@@ -7,14 +7,15 @@ import Logolight from 'shared/assets/Logoapp_light.svg'
 import Logodark from 'shared/assets/Logoapp_dark.svg'
 import Modal from 'widgets/Modal/Modal';
 import { className } from "shared/lib/helpers/classNames/classNames"
-import { useCallback, useState } from 'react';
+import { Suspense, useCallback, useState } from 'react';
 import Button from 'widgets/Button/Button';
 import { Auth } from 'widgets/Auth/index';
+import { PreLoader } from 'widgets/PreLoader';
 
-interface LoginModalProps {
+export interface LoginModalProps {
 
     isOpen: boolean
-    onClose: ()=>void
+    onClose?: ()=>void
 }
 
 
@@ -28,7 +29,10 @@ export const LoginModal = ({isOpen, onClose}: LoginModalProps) => {
             isOpen={isOpen}
             onClose={onClose}
             >
-            <Auth isOpen={isOpen}/>
+                <Suspense fallback={<PreLoader/>}>
+                    <Auth isOpen={isOpen}/>
+                </Suspense>
+            
 
         </Modal>
 

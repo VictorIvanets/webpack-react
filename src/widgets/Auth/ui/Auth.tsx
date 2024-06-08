@@ -1,17 +1,16 @@
 import { useTheme } from "app/Providers/Theme/useTheme"
-import { isUserActions } from "entities/AuthSlise";
-import { userActions } from "entities/UserSlise";
-import { FormEvent, memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next"
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { className } from "shared/lib/helpers/classNames/classNames"
 import Button from "widgets/Button/Button";
 import { Input } from "widgets/Input/index";
 import { useRef } from 'react';
-import { loginActions, loginReduser } from "entities/LofinSlice";
+import { loginActions, loginReduser } from "entities/LoginSlice";
 import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema";
 import { LoginByUserName } from "features/Servises/LoginByUserName";
-import { Action, Store, ThunkDispatch } from "@reduxjs/toolkit";
+import { Action, ThunkDispatch } from "@reduxjs/toolkit";
+import DinamicModulLoader from "shared/lib/DinamicModulLoader/DinamicModulLoader";
 
 export type LoginForm = {
     name: {
@@ -27,11 +26,11 @@ export type LoginForm = {
 
 export type RootState = ReturnType<typeof loginReduser>;
 export type AppThunkDispatch = ThunkDispatch<RootState, any, Action>;
-export type AppStore = Omit<Store<RootState, Action>, "dispatch"> & {
-    dispatch: AppThunkDispatch;
-  };
+// export type AppStore = Omit<Store<RootState, Action>, "dispatch"> & {
+//     dispatch: AppThunkDispatch;
+//   };
 
-export const Auth = memo(({isOpen}: any) => {
+const Auth = memo(({isOpen}: any) => {
     
     const useAppDispatch = useDispatch<AppThunkDispatch>();
     const {theme} = useTheme()
@@ -39,18 +38,19 @@ export const Auth = memo(({isOpen}: any) => {
     const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null);
     const authData = useSelector((state: StateSchema) => state.user.authData)
-
-
-    useEffect(()=>{
-        inputRef.current.focus();
-    }, [isOpen])
-
     const {username, password, isLoading, error} = useSelector((state: StateSchema) => state.login)
+
+
     const [validForm1, setValidForm1] = useState(false)
     const [validForm2, setValidForm2] = useState(false)
     const [valueName, setValueName] = useState('')
     const [valuePass, setValuePass] = useState('')
     const [errorLogin, setErrorLogin] = useState(false)
+
+
+    useEffect(()=>{
+        inputRef.current.focus();
+    }, [isOpen])
 
     useEffect(()=>{
         setValueName(username)
@@ -63,13 +63,6 @@ export const Auth = memo(({isOpen}: any) => {
         }
     },[error])
 
-    // console.log(error)
-    // console.log(username)
-    // console.log(password)
-    // console.log(isLoading)
-
-
-
     const onCangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) =>{
         dispatch(loginActions.setUserName(e.target.value))
         e.target.value.length <= 3 ? setValidForm1(true) : setValidForm1(false)
@@ -80,20 +73,14 @@ export const Auth = memo(({isOpen}: any) => {
         e.target.value.length <= 2 ? setValidForm2(true) : setValidForm2(false)
     },[dispatch])
 
-    
-
-    
-  
 
     const onLoginClick = useCallback(()=> {
-        // dispatch(LoginByUserName())
         useAppDispatch(LoginByUserName({username, password}))
         setErrorLogin(false)
-            // setValuePass("")
     },[useAppDispatch, username, password])
   
   
-    return (
+    return ( 
         <div className={className('autbox', {
             autboxdark: (theme === "dark" ? true : false), invalid: (errorLogin === true ? true : false)}, [])}>
         <div className='autbox__text'>
@@ -128,6 +115,7 @@ export const Auth = memo(({isOpen}: any) => {
         </div>
 
         </div>
+    
     );
 
 });

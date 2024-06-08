@@ -5,16 +5,13 @@ import { LangSwitch } from 'widgets/LangSwitch';
 import { ThemeSwitch } from 'widgets/ThemeSwitch';
 import Logolight from 'shared/assets/Logoapp_light.svg'
 import Logodark from 'shared/assets/Logoapp_dark.svg'
-import Modal from 'widgets/Modal/Modal';
-import { className } from "shared/lib/helpers/classNames/classNames"
 import { useCallback, useEffect, useState } from 'react';
 import Button from 'widgets/Button/Button';
-import { Auth } from 'widgets/Auth/index';
 import { LoginModal } from 'features/AuthByUserName/LoginModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from 'app/Providers/StoreProvider/config/StateSchema';
 import { userActions } from 'entities/UserSlise';
-import { loginActions } from 'entities/LofinSlice';
+import { loginActions } from 'entities/LoginSlice';
 
 
 export const Navbar = () => {
@@ -44,15 +41,12 @@ export const Navbar = () => {
             setIsAuthModal(false)
         }
     },[authData])
-  
-
 
     return (
     <div className="header">
         <div className='navbar'>
             <div className="logo">{theme === "dark" ? <Logolight className='logosvg'/>:<Logodark className='logosvg'/>}</div>
 
-            
             {!authData 
             ? <Button 
             className ="modalbtn" 
@@ -68,10 +62,8 @@ export const Navbar = () => {
             </Button> 
             </>
             }
-
                 
         </div>
-
 
         <div className='switch'>
             <LangSwitch/>

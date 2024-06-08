@@ -3,16 +3,14 @@ import { LoginSchema } from 'features/AuthByUserName/LoginForm'
 import { LoginByUserName } from 'features/Servises/LoginByUserName'
 
 
-
-
-  const initialState: LoginSchema = {
+const initialState: LoginSchema = {
     username: '',
     password: '',
     isLoading: false,
     error: ''
     }
   
-  export const LoginSlise = createSlice({
+export const LoginSlise = createSlice({
     name: 'login',
     initialState: initialState,
     reducers: {

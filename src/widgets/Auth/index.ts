@@ -1,4 +1,4 @@
-import {Auth} from "./ui/Auth"
+import {Auth} from "./ui/Auth.async"
 
 export {
     Auth
