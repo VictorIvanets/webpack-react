@@ -5,7 +5,7 @@ import { LangSwitch } from 'widgets/LangSwitch';
 import { ThemeSwitch } from 'widgets/ThemeSwitch';
 import Logolight from 'shared/assets/Logoapp_light.svg'
 import Logodark from 'shared/assets/Logoapp_dark.svg'
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import Button from 'widgets/Button/Button';
 import { LoginModal } from 'features/AuthByUserName/LoginModal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,13 +14,15 @@ import { userActions } from 'entities/UserSlise';
 import { loginActions } from 'entities/LoginSlice';
 
 
-export const Navbar = () => {
+export const Navbar = memo(() => {
 
     const {theme} = useTheme()
     const {t} = useTranslation()
     const [isAuthModal, setIsAuthModal] = useState(false)
     const authData = useSelector((state: StateSchema) => state.user.authData)
-    const userName = useSelector((state: StateSchema) => state.login.username)
+    const userName = useSelector((state: StateSchema) => state.login.username) || (JSON.parse(localStorage.getItem('user')))?.username
+    // const userLocalName = (JSON.parse(localStorage.getItem('user'))).username
+
     const dispatch = useDispatch()
 
     const onClose = useCallback(()=>{
@@ -55,6 +57,8 @@ export const Navbar = () => {
             : <>
             <NavLink className="margin1" to="/">{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to="/about">{t("Про сайт")}</NavLink>
+            <NavLink className="margin1" to="/profile">{t("Профайл")}</NavLink>
+
             <h3 className='navbarusername'>{userName.toUpperCase()}</h3>
             <Button 
             className ="modalbtnOut" 
@@ -76,7 +80,7 @@ export const Navbar = () => {
         />
     </div>
     );
-};
+});
 
 
 

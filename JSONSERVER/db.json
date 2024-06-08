@@ -26,9 +26,19 @@
     },
     {
       "id": 2,
-      "username": "victor",
+      "username": "multik",
       "password": "5555"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": { 
+
+    "first": "Віктор",
+    "lastname": "Іванець",
+    "age": "44",
+    "currency": "UAH",
+    "country": "Україна",
+    "city": "Житомр",
+    "username": "multik",
+    "avatar": "https://ivanetsvictor.site/img/My_foto.png"
+  }
 }

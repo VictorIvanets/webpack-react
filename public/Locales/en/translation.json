@@ -16,5 +16,6 @@
     "Зайти": "Enter",
     "УВІЙТИ": "ENTER",
     "Вийти": "Exit",
-    "пароль": "invalid login or password"
+    "пароль": "invalid login or password",
+    "Профайл": "Profile"
 }

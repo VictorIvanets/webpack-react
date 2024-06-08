@@ -1,6 +1,6 @@
 import { className } from 'shared/lib/helpers/classNames/classNames';
 import { useTheme } from 'app/Providers/Theme/useTheme';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { LangSwitch } from 'widgets/LangSwitch';
@@ -8,7 +8,7 @@ import { ThemeSwitch } from 'widgets/ThemeSwitch';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 
-export const SideBar = () => {
+export const SideBar = memo(() => {
 
     const {theme} = useTheme()
     const [collaps, setCollaps] = useState(true)
@@ -46,6 +46,6 @@ export const SideBar = () => {
 
         </div>
     );
-};
+});
 
 export default SideBar;

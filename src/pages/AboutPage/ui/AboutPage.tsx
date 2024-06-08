@@ -9,17 +9,17 @@ export function AboutPage(){
    const {t} = useTranslation()
 
 
-useEffect(()=>{
-      fetch(`http://localhost:8000/posts/`) 
-          .then(response => response.json())
-          .then(data => {
-            // console.log(data);
-          })
-          .catch(err => {
-            //   console.log(err);
-          });
+// useEffect(()=>{
+//       fetch(`http://localhost:8000/posts/`) 
+//           .then(response => response.json())
+//           .then(data => {
+//             // console.log(data);
+//           })
+//           .catch(err => {
+//             //   console.log(err);
+//           });
       
-},[]);
+// },[]);
 
 
 

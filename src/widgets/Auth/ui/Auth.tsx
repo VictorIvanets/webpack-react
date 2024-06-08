@@ -6,11 +6,10 @@ import { className } from "shared/lib/helpers/classNames/classNames"
 import Button from "widgets/Button/Button";
 import { Input } from "widgets/Input/index";
 import { useRef } from 'react';
-import { loginActions, loginReduser } from "entities/LoginSlice";
+import { loginActions } from "entities/LoginSlice";
 import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema";
 import { LoginByUserName } from "features/Servises/LoginByUserName";
-import { Action, ThunkDispatch } from "@reduxjs/toolkit";
-import DinamicModulLoader from "shared/lib/DinamicModulLoader/DinamicModulLoader";
+import { AppThunkDispatchLogin } from "shared/lib/helpers/AppDispatch/AppDispath";
 
 export type LoginForm = {
     name: {
@@ -24,22 +23,18 @@ export type LoginForm = {
     }
 }
 
-export type RootState = ReturnType<typeof loginReduser>;
-export type AppThunkDispatch = ThunkDispatch<RootState, any, Action>;
-// export type AppStore = Omit<Store<RootState, Action>, "dispatch"> & {
-//     dispatch: AppThunkDispatch;
-//   };
+
+
 
 const Auth = memo(({isOpen}: any) => {
-    
-    const useAppDispatch = useDispatch<AppThunkDispatch>();
+
+   
+    const dispatch = useDispatch<AppThunkDispatchLogin>();
     const {theme} = useTheme()
     const {t} = useTranslation()
-    const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null);
     const authData = useSelector((state: StateSchema) => state.user.authData)
-    const {username, password, isLoading, error} = useSelector((state: StateSchema) => state.login)
-
+    const {username, password, error} = useSelector((state: StateSchema) => state.login)
 
     const [validForm1, setValidForm1] = useState(false)
     const [validForm2, setValidForm2] = useState(false)
@@ -75,9 +70,9 @@ const Auth = memo(({isOpen}: any) => {
 
 
     const onLoginClick = useCallback(()=> {
-        useAppDispatch(LoginByUserName({username, password}))
+        dispatch(LoginByUserName({username, password}))
         setErrorLogin(false)
-    },[useAppDispatch, username, password])
+    },[dispatch, username, password])
   
   
     return ( 

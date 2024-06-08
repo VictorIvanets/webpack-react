@@ -2,6 +2,7 @@ import { Action, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/tool
 import { authSchema } from "entities/AuthSlise";
 import { userSchema } from "entities/UserSlise";
 import { LoginSchema } from "features/AuthByUserName/LoginForm";
+import { ProfileSchema } from "pages/ProfilePage";
 
 
 
@@ -10,6 +11,7 @@ export interface StateSchema {
     user: userSchema
     isuser: authSchema
     login?: LoginSchema
+    profile?: ProfileSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

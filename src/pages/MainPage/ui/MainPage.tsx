@@ -31,11 +31,13 @@ export function MainPage(){
             <h1 className={className('margin1', {mainh1dark: (theme === "dark" ? true : false)}, [])}>{t("Головна сторінка")}</h1>
       </div>
 
-      <div 
+    <div className="ballwrapper">
+    <div 
+    className="testbox"
+    style={{top: `${moveY}px`, left: `${moveX}px`, scale: `${scale}%`}}
+    ></div>
+    </div>
 
-      className="testbox"
-      style={{top: `${moveY}px`, left: `${moveX}px`, scale: `${scale}%`}}
-      ></div>
 
 
     </div>
