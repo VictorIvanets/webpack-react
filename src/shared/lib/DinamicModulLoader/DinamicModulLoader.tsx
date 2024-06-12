@@ -27,8 +27,8 @@ const store = useStore() as ReduxStoreManager
 
 useEffect(()=>{
 
-Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry)=>{
-    store.reducerManager.add(name, reducer)
+Object.entries(reducers).forEach(([name, reducer])=>{
+    store.reducerManager.add(name as StateSchemaKey, reducer)
     dispatch({type: `@INIT ${name} REDUCER`})
 })
 
@@ -37,9 +37,9 @@ Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry)=>{
 return ()=> {
 if(removeAfterUnmount){
 
-    Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry)=>{
+    Object.entries(reducers).forEach(([name, reducer])=>{
         dispatch({type: `@DESTROY ${name} REDUCER`})
-        store.reducerManager.remove(name)
+        store.reducerManager.remove(name as StateSchemaKey)
     })
 }
 }}, [])

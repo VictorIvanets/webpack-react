@@ -14,16 +14,16 @@ import { StoreProvider } from 'app/Providers/StoreProvider';
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
   <React.StrictMode>
-
-        <StoreProvider>
-            <BrowserRouter>
+      <BrowserRouter>
+            <StoreProvider>
+           
                   <ErrorBoundary FallbackComponent={ErrorBoundarie}>
                         <ThemeProvider>
                                    <App />
                         </ThemeProvider>
                   </ErrorBoundary>
-            </BrowserRouter>
-        </StoreProvider>
-        
+            
+             </StoreProvider>
+      </BrowserRouter>
   </React.StrictMode>
 );

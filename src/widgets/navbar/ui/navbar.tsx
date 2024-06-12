@@ -1,6 +1,6 @@
 import { useTheme } from 'app/Providers/Theme/useTheme';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { LangSwitch } from 'widgets/LangSwitch';
 import { ThemeSwitch } from 'widgets/ThemeSwitch';
 import Logolight from 'shared/assets/Logoapp_light.svg'
@@ -21,8 +21,7 @@ export const Navbar = memo(() => {
     const [isAuthModal, setIsAuthModal] = useState(false)
     const authData = useSelector((state: StateSchema) => state.user.authData)
     const userName = useSelector((state: StateSchema) => state.login.username) || (JSON.parse(localStorage.getItem('user')))?.username
-    // const userLocalName = (JSON.parse(localStorage.getItem('user'))).username
-
+    const navigator = useNavigate()
     const dispatch = useDispatch()
 
     const onClose = useCallback(()=>{
@@ -34,6 +33,7 @@ export const Navbar = memo(() => {
     }, [])
 
     const onLogOut = useCallback(()=>{
+        navigator("/")
         dispatch(userActions.logout())
         dispatch(loginActions.clearLoginState())
     }, [dispatch])

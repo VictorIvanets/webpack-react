@@ -5,10 +5,14 @@ import axiois, { AxiosError } from 'axios'
 import { User } from "entities/UserSlise"
 import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import DinamicModulLoader, { ReducerList } from "shared/lib/DinamicModulLoader/DinamicModulLoader"
 import { className } from "shared/lib/helpers/classNames/classNames"
 import { profileReduser } from "../Profileconfig/ProfileSlice"
+import { AppThunkDispatchLogin } from "shared/lib/helpers/AppDispatch/AppDispath"
+import { fetchProfileData } from "../Profileconfig/fetchProfileData"
+import { PreLoader } from "widgets/PreLoader"
+import ProfileCard from "./ProfileCard"
 
 
 const reducers: ReducerList = {
@@ -16,19 +20,17 @@ const reducers: ReducerList = {
 
 }
 
-
-
-
 export function ProfilePage(){
 
-   const {theme} = useTheme()
-   const {t} = useTranslation()
+    const {theme} = useTheme()
+    const {t} = useTranslation()
+    const dispatch = useDispatch<AppThunkDispatchLogin>();
+    const profile = useSelector((state: StateSchema) => state?.profile?.data || '')
 
 
-
-const {username, password, error} = useSelector((state: StateSchema) => state.login)
-
-
+useEffect(()=>{
+    dispatch(fetchProfileData())
+},[dispatch])
 
 
 
@@ -40,6 +42,8 @@ const {username, password, error} = useSelector((state: StateSchema) => state.lo
       <div className={className('profilepage__header', {profildarks__header: (theme === "dark" ? true : false)}, [])}>
             <h1 className={className('margin1', {profilh1dark: (theme === "dark" ? true : false)}, [])}>{t("Профайл")}</h1>
       </div>
+      
+      <ProfileCard/>
 
     </div>
     

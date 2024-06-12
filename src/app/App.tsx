@@ -9,6 +9,7 @@ import LeftComponent from "pages/LeftComponent/LeftComponent"
 import Modal from "widgets/Modal/Modal"
 import { useDispatch } from "react-redux"
 import { userActions } from "entities/UserSlise"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -16,6 +17,7 @@ export function App() {
 
 const {theme} = useTheme()
 const dispatch = useDispatch()
+const navigate = useNavigate()
 
 useEffect(()=>{
     dispatch(userActions.initAuthData())

@@ -26,6 +26,6 @@ export interface ProfileProps {
 export interface ProfileSchema {
     data?: ProfileProps
     isLoading: boolean
-    error?: string
+    error?: string | unknown
     readonly?: boolean
 }

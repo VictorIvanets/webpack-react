@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { createReduxStore } from "../config/store";
 import { StateSchema } from "../config/StateSchema";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -20,7 +21,10 @@ export const StoreProvider = (props: StoreProviderProps) => {
         initialState
     } = props
 
-    const store = createReduxStore(initialState)
+    const navigate = useNavigate()
+ 
+
+    const store = createReduxStore(initialState, navigate)
 
     return (
         <Provider store={store}>
