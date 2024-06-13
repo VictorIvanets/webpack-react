@@ -1,0 +1,93 @@
+.profilecardbox
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    position: relative
+.profilecard
+    width: 100%
+    height: max-content
+    // background: #575757
+    padding: 2rem
+    display: flex
+    flex-direction: row    
+    flex-wrap: nowrap
+    &__info
+        display: flex
+        flex-direction: row    
+        flex-wrap: wrap 
+        align-content: center
+        width: 100%
+        height: 32rem
+        
+        &__text
+            padding: 2rem
+            width: 50%
+
+    &__foto
+        width: 20rem
+        height: 100%
+        object-fit: contain
+        border-right: 2px solid #0000009a
+        border-bottom: 2px solid #0000009a
+
+
+
+    &__data
+        width: 100%
+        height: 32rem
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        align-items: center
+        padding-bottom: 3rem
+        &__input
+            width: 80%
+        
+
+    &__header
+        font-size: 2rem
+    &__btn
+        margin: 1rem
+        width: 10rem
+        height: 4rem
+        background: #00627a
+        border-radius: 5px
+        color: #ffffff
+        z-index: 6
+        transition: all 0.1s
+        &:hover
+            background: #007997
+            transition: all 0.1s
+        &:active
+            background: #003947
+            scale: 95%
+            transition: all 0.1s
+.cancel
+    background: #00627a
+    &:hover
+        background: #610000
+        transition: all 0.1s
+    &:active
+        background: #2b0000
+        scale: 95%
+        transition: all 0.1s
+.save
+    background: #00627a
+    &:hover
+        background: #008800
+        transition: all 0.1s
+    &:active
+        background: #0e2c00
+        scale: 95%
+        transition: all 0.1s
+
+
+.readonlyinput
+    opacity: 0.5
+
+
+
+
+// .profilecarddarks
+//     background: #0000003a

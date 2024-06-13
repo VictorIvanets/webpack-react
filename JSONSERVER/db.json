@@ -1,0 +1,43 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "userId": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "username": "multik",
+      "password": "5555"
+    }
+  ],
+  "profile": {
+    "first": "Віктор",
+    "lastname": "Іванець",
+    "age": "44",
+    "currency": "UAH",
+    "country": "Україна",
+    "city": "Житомир",
+    "username": "multik",
+    "avatar": "https://ivanetsvictor.site/img/My_foto.png"
+  }
+}

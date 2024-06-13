@@ -1,5 +1,8 @@
+import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema"
 import { AboutPage } from "pages/AboutPage/index"
 import { MainPage } from "pages/MainPage/index"
+import { ProfilePage } from "pages/ProfilePage/index"
+import { useSelector } from "react-redux"
 import { RouterProps } from "react-router-dom"
 import { PreLoader } from "widgets/PreLoader"
 import { NotFound } from "widgets/not_found"
@@ -8,16 +11,18 @@ export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
     LOADER = 'load',
-    NOTFOUND = 'notfound'
-
+    NOTFOUND = 'notfound',
+    PROFILE = 'profile'
 }
 
+
 export const RoutePath: Record<AppRoutes, string> = {
+    
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.LOADER]: '/load',
-    [AppRoutes.NOTFOUND]: '/*'
-
+    [AppRoutes.PROFILE]: '/profile',
+    [AppRoutes.NOTFOUND]: '/*',
 }
 
 export const routerConfig = {
@@ -34,6 +39,13 @@ export const routerConfig = {
         path: RoutePath.load,
         element: <PreLoader/>
     },
+    [AppRoutes.PROFILE]: {
+        path: RoutePath.profile,
+        element: <ProfilePage/>
+    },
+
+
+    
     [AppRoutes.NOTFOUND]: {
         path: RoutePath.notfound,
         element: <NotFound/>

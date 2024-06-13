@@ -1,0 +1,42 @@
+.autbox
+    width: 100%
+    max-height: max-content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 1rem
+
+    &__text
+        height: 5rem
+        padding: 1rem
+    &__inputs
+        height: 25rem
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+.invalid
+    background: #9c000080
+    border-radius: 7px
+    animation: error 2s linear infinite
+    @keyframes error
+        0% 
+            box-shadow: 0px 0px 20px red
+        50% 
+            box-shadow: 0px 0px 0px red
+        100% 
+            box-shadow: 0px 0px 20px red
+
+
+
+.invalidinput1
+    border: 2px solid red
+    box-shadow: 0px 0px 13px red
+    border-radius: 7px
+.invalidinput2
+    border: 2px solid red
+    box-shadow: 0px 0px 13px red
+    border-radius: 7px
+
+
+
+

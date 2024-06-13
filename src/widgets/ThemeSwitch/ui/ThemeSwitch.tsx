@@ -3,12 +3,13 @@ import { useTheme } from 'app/Providers/Theme/useTheme';
 import Day from 'shared/assets/day.svg'
 import Night from 'shared/assets/night.svg'
 import { Button } from 'widgets/Button/Button';
+import { memo } from 'react';
 
 
 
 
 
-export function ThemeSwitch () {
+export const ThemeSwitch = memo(() => {
 
     const {theme, toggleTheme} = useTheme()
     {
@@ -21,6 +22,6 @@ export function ThemeSwitch () {
             </div>
         );
     }
-}
+})
 
 export default ThemeSwitch;

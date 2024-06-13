@@ -3,25 +3,25 @@ import { className } from "../shared/lib/helpers/classNames/classNames"
 import { AppRouter } from "./Providers/router"
 import { Navbar } from "widgets/navbar/index"
 import { SideBar } from "widgets/SideBar/index"
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { PreLoader } from "widgets/PreLoader/index"
 import LeftComponent from "pages/LeftComponent/LeftComponent"
+import Modal from "widgets/Modal/Modal"
+import { useDispatch } from "react-redux"
+import { userActions } from "entities/UserSlise"
+import { useNavigate } from "react-router-dom"
 
 
 
 export function App() {
 
 const {theme} = useTheme()
+const dispatch = useDispatch()
+const navigate = useNavigate()
 
-// useEffect(()=>{
-//     if (Math.random()< 0.5){
-
-//         throw new Error("ОШИБКА")
-        
-//     }
-// }, [])
-
-
+useEffect(()=>{
+    dispatch(userActions.initAuthData())
+}, [dispatch])
 
 
     return <div className={className('app', {}, [theme])}> 

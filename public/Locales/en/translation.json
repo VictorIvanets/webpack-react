@@ -11,5 +11,21 @@
     "TO HIDE": "TO HIDE",
     "404": "404 NOT FOUND",
     "наголовну": "main page",
-    "Прелоадер": "load"
+    "Прелоадер": "load",
+    "modal": "modal",
+    "Зайти": "Enter",
+    "УВІЙТИ": "ENTER",
+    "Вийти": "Exit",
+    "пароль": "invalid login or password",
+    "Профайл": "Profile",
+    "Редагувати": "Edit",
+    "Відмінити": "Cancel",
+    "Зберегти": "Save",
+    "Ім'я": "Name",
+    "Прізвище": "Last Name",
+    "Країна": "Country",
+    "Місто": "City",
+    "Вік": "Age",
+    "років": "years",
+    "Нік": "Nickname"
 }

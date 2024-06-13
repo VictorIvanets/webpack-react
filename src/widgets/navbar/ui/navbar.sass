@@ -7,9 +7,11 @@
     border-radius: .7rem
     justify-content: space-between
     align-items: center 
+
 .navbar
     display: flex
     flex-wrap: wrap
+    align-items: center
 .switch
     display: flex
     align-items: center 
@@ -17,5 +19,36 @@
     width: 20rem
 .logosvg
     width: 20rem
-
-
+.modalbtn
+    width: 8rem
+    height: 3rem
+    background: #00627a
+    border-radius: 5px
+    color: white
+    z-index: 6
+    transition: all 0.1s
+    &:hover
+        background: #007997
+        transition: all 0.1s
+    &:active
+        background: #003947
+        scale: 95%
+        transition: all 0.1s
+.modalbtnOut
+    width: 8rem
+    height: 3rem
+    background: #00627a
+    border-radius: 5px
+    color: #fffb00
+    z-index: 6
+    transition: all 0.1s
+    &:hover
+        background: #007997
+        transition: all 0.1s
+    &:active
+        background: #003947
+        scale: 95%
+        transition: all 0.1s
+        
+.navbarusername
+    margin: 0rem 2rem
