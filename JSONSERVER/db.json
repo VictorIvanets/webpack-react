@@ -30,14 +30,13 @@
       "password": "5555"
     }
   ],
-  "profile": { 
-
+  "profile": {
     "first": "Віктор",
     "lastname": "Іванець",
     "age": "44",
     "currency": "UAH",
     "country": "Україна",
-    "city": "Житомр",
+    "city": "Житомир",
     "username": "multik",
     "avatar": "https://ivanetsvictor.site/img/My_foto.png"
   }

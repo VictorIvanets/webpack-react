@@ -3,6 +3,7 @@
     display: flex
     justify-content: center
     align-items: flex-start
+    position: relative
 .profilecard
     width: 100%
     height: max-content
@@ -47,6 +48,7 @@
     &__header
         font-size: 2rem
     &__btn
+        margin: 1rem
         width: 10rem
         height: 4rem
         background: #00627a
@@ -61,6 +63,30 @@
             background: #003947
             scale: 95%
             transition: all 0.1s
+.cancel
+    background: #00627a
+    &:hover
+        background: #610000
+        transition: all 0.1s
+    &:active
+        background: #2b0000
+        scale: 95%
+        transition: all 0.1s
+.save
+    background: #00627a
+    &:hover
+        background: #008800
+        transition: all 0.1s
+    &:active
+        background: #0e2c00
+        scale: 95%
+        transition: all 0.1s
+
+
+.readonlyinput
+    opacity: 0.5
+
+
 
 
 // .profilecarddarks

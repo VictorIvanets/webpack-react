@@ -17,5 +17,15 @@
     "УВІЙТИ": "ENTER",
     "Вийти": "Exit",
     "пароль": "invalid login or password",
-    "Профайл": "Profile"
+    "Профайл": "Profile",
+    "Редагувати": "Edit",
+    "Відмінити": "Cancel",
+    "Зберегти": "Save",
+    "Ім'я": "Name",
+    "Прізвище": "Last Name",
+    "Країна": "Country",
+    "Місто": "City",
+    "Вік": "Age",
+    "років": "years",
+    "Нік": "Nickname"
 }
