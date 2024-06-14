@@ -1,21 +1,26 @@
 import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema"
 import { useTheme } from "app/Providers/Theme/useTheme"
-import { useCallback, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useDispatch, useSelector } from "react-redux"
 import { className } from "shared/lib/helpers/classNames/classNames"
 import { profileActions, profileReduser } from "../Profileconfig/ProfileSlice"
 import { AppThunkDispatchData, AppThunkDispatchLogin } from "shared/lib/helpers/AppDispatch/AppDispath"
-import { ProfileCardProps, ProfileProps } from "../Profileconfig/Profiletype"
+import { Currency, ProfileCardProps, ProfileProps } from "../Profileconfig/Profiletype"
 import Button from "widgets/Button/Button"
 import { PreLoader } from "widgets/PreLoader"
 import { Input } from "widgets/Input"
 import { updateProfileData } from "../Profileconfig/updateProfileData"
+import Select from "widgets/Select/Select"
 // import { fetchProfileData } from "../Profileconfig/fetchProfileData"
 
+export const currencyOptions = [
+    {value: Currency.UAH, content: Currency.UAH},
+    {value: Currency.USD, content: Currency.USD},
+    {value: Currency.EUR, content: Currency.EUR}
+]
 
-
-export function ProfileCard(
+export const ProfileCard = memo((
     {
         data, 
         isLoading, 
@@ -27,7 +32,8 @@ export function ProfileCard(
         onCangeAge,
         onCangeCyty,
         onCangeCountry,
-    }: ProfileCardProps){
+        onCangeCurrency,
+    }: ProfileCardProps)=>{
 
     const dispatchData = useDispatch<AppThunkDispatchData>();
     const {theme} = useTheme()
@@ -81,7 +87,7 @@ export function ProfileCard(
                     
                     {readonly 
                     ?                 
-                    <><Input
+                    <div className="profilecard__data__edit"><Input
                     onChange={onCangeFirstname}
                     value={data?.first}
                     placeholder="Ім'я"
@@ -117,7 +123,16 @@ export function ProfileCard(
                     placeholder="Призвіще"
                     className="profilecard__data__input"
                     /> 
-                    <div>
+
+                    <Select 
+                        className="selectcurrency" 
+                        label={t("CURRENCY")}
+                        options={currencyOptions}
+                        onChange={onCangeCurrency}
+                        value={data?.currency}
+                        />
+
+                    <div className="profilecard__data__btn">
                     <Button 
                             onClick={onCancelEdit}
                             className="profilecard__btn cancel">
@@ -129,7 +144,7 @@ export function ProfileCard(
                             {t("Зберегти")}
                     </Button>
                     </div>
-                    </> 
+                    </div> 
                     : ''}
                 
                   
@@ -143,6 +158,6 @@ export function ProfileCard(
        
 </div>
 )
-   }
+   })
 
    export default ProfileCard

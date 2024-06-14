@@ -27,5 +27,6 @@
     "Місто": "City",
     "Вік": "Age",
     "років": "years",
-    "Нік": "Nickname"
+    "Нік": "Nickname",
+    "CURRENCY": "Currency"
 }

@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
+import { createAsyncThunk, current } from "@reduxjs/toolkit"
 import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema"
 import { useTheme } from "app/Providers/Theme/useTheme"
 import axiois, { AxiosError } from 'axios'
@@ -13,6 +13,7 @@ import { AppThunkDispatchLogin } from "shared/lib/helpers/AppDispatch/AppDispath
 import { fetchProfileData } from "../Profileconfig/fetchProfileData"
 import { PreLoader } from "widgets/PreLoader"
 import ProfileCard from "./ProfileCard"
+import { Currency } from "../Profileconfig/Profiletype"
 
 
 const reducers: ReducerList = {
@@ -63,6 +64,10 @@ export function ProfilePage(){
         dispatch(profileActions.updateProfile({country: e.target.value || ''}))
     }, [dispatch])
 
+    const onCangeCurrency = useCallback((currency: Currency)=>{
+        dispatch(profileActions.updateProfile({currency}))
+    }, [dispatch])
+
 
     return ( <DinamicModulLoader reducers={reducers} removeAfterUnmount>
     
@@ -84,6 +89,7 @@ export function ProfilePage(){
       onCangeAge = {onCangeAge}
       onCangeCyty = {onCangeCyty}
       onCangeCountry = {onCangeCountry}
+      onCangeCurrency = {onCangeCurrency}
       />}
     </div>
     

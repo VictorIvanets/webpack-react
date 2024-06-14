@@ -5,11 +5,6 @@ export enum Currency {
     EUR = "EUR"
 }
 
-export enum Country {
-    USA = "USA",
-    UKRAINE = "UKRAINE",
-    FRANCE = "FRANCE"
-}
 
 export interface ProfileProps {
 
@@ -17,7 +12,7 @@ export interface ProfileProps {
     lastname?: string
     age?: string
     currency?: Currency
-    country?: Country
+    country?: string
     city?: string
     username?: string
     avatar?: string
@@ -42,4 +37,5 @@ export interface ProfileCardProps {
     onCangeAge?: ()=>void
     onCangeCyty?: ()=>void
     onCangeCountry?: ()=>void
+    onCangeCurrency?: (currency: Currency)=>void
 }
