@@ -1,15 +1,19 @@
-import { AboutPage } from "pages/AboutPage/index"
-import { MainPage } from "pages/MainPage/index"
-import React, { Suspense } from 'react';
+import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema";
+import { Suspense, memo, useMemo } from 'react';
+import { useSelector } from "react-redux";
 import { Route, Routes } from 'react-router-dom';
 import { routerConfig } from "shared/config/routeConfig/routeConfig";
 import { PreLoader } from "widgets/PreLoader/index";
 
 const AppRouter = () => {
+
+    const isAuth = useSelector((state: StateSchema) => state.user.authData)
+
+
     return (
         <Suspense fallback={<PreLoader/>}>
         <Routes>
-            {Object.values(routerConfig).map(({element, path})=>(
+            {(Object.values(routerConfig).filter(route =>(route.authOnli && !isAuth) ? false : true)).map(({element, path})=>(
                 <Route
                     key={path}
                     path={path}
@@ -21,4 +25,4 @@ const AppRouter = () => {
     );
 };
 
-export default AppRouter;
+export default memo(AppRouter);

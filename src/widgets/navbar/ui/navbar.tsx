@@ -57,9 +57,10 @@ export const Navbar = memo(() => {
             : <>
             <NavLink className="margin1" to="/">{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to="/about">{t("Про сайт")}</NavLink>
-            <NavLink className="margin1" to="/profile">{t("Профайл")}</NavLink>
+            <NavLink className="margin1" to="/profile">{
+            `${t("Профайл")} ${userName.toUpperCase()}`
+            }</NavLink>
 
-            <h3 className='navbarusername'>{userName.toUpperCase()}</h3>
             <Button 
             className ="modalbtnOut" 
             onClick={onLogOut}> {t("Вийти")}

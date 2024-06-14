@@ -3,9 +3,19 @@ import { AboutPage } from "pages/AboutPage/index"
 import { MainPage } from "pages/MainPage/index"
 import { ProfilePage } from "pages/ProfilePage/index"
 import { useSelector } from "react-redux"
-import { RouterProps } from "react-router-dom"
+import { RouteProps, RouterProps } from "react-router-dom"
 import { PreLoader } from "widgets/PreLoader"
 import { NotFound } from "widgets/not_found"
+
+
+
+type AppRouterProps = RouteProps & {
+    path: string
+    authOnli?: boolean
+}
+
+
+
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -25,11 +35,12 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.NOTFOUND]: '/*',
 }
 
-export const routerConfig = {
+export const routerConfig: Record<AppRoutes, AppRouterProps> = {
 
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
-        element: <MainPage/>
+        element: <MainPage/>,
+        authOnli: false
     },
     [AppRoutes.ABOUT]: {
         path: RoutePath.about,
@@ -41,7 +52,8 @@ export const routerConfig = {
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath.profile,
-        element: <ProfilePage/>
+        element: <ProfilePage/>,
+        authOnli: true
     },
 
 
