@@ -9,12 +9,10 @@ import { NotFound } from "widgets/not_found"
 
 
 
-type AppRouterProps = RouteProps & {
+export type AppRouterProps = RouteProps & {
     path: string
     authOnli?: boolean
 }
-
-
 
 
 export enum AppRoutes {

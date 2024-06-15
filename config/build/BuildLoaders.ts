@@ -5,6 +5,8 @@ import { BuildOptions } from './types/config';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[]{
     
+  const {isDev} = options
+
     const svgLoader =  {
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -24,8 +26,8 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[]{
                 keyAsDefaultValue: true
 
               } ] , 
-              
-            ] 
+              isDev && require.resolve('react-refresh/babel')
+            ].filter(Boolean)
           }
         }
       }

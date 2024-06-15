@@ -20,7 +20,7 @@ export const SideBar = memo(() => {
     }
 
     return (
-        <div className={className('sidebar', {sidebardark: (theme === "dark" ? true : false), collaps: (collaps === true ? true : false)}, [])}>
+        <div className={className('sidebar', {sidebardark: (theme === "dark" ? true : false), sidebarruby: (theme === "ruby" ? true : false), collaps: (collaps === true ? true : false)}, [])}>
             
         <div className='sidebarbox'>
         
@@ -40,7 +40,7 @@ export const SideBar = memo(() => {
 
 
 
-            <button className={className('sidebtn', {sidebarbtndark: (theme === "dark" ? true : false), sidebtn90: (collaps === true ? true : false)}, [])}
+            <button className={className('sidebtn', {sidebarbtndark: (theme === "dark" ? true : false), sidebarbtnruby: (theme === "ruby" ? true : false), sidebtn90: (collaps === true ? true : false)}, [])}
             onClick={toggle}>{collaps ? t("SIDEBAR"):t('TO HIDE')}</button>
             </div>
 
