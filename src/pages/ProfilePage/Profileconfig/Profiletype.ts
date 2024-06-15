@@ -6,6 +6,15 @@ export enum Currency {
 }
 
 
+export enum ValidateProfileError {
+    INCORRECT_USER_DATA = "Введіть Ім'я та Прізвище",
+    INCORRECT_USER_EGE = "Введіть вірно вік",
+    INCORRECT_USER_COUNTRY = "Введіть назву країни",
+    NO_DATA = "NO_DATA",
+    SERVER_ERROR = "SERVER_ERROR"
+}
+
+
 export interface ProfileProps {
 
     first?: string
@@ -22,8 +31,9 @@ export interface ProfileSchema {
     form?: ProfileProps
     data?: ProfileProps
     isLoading: boolean
-    error?: string | unknown
+    error?: string | string[] | unknown
     readonly?: boolean
+    validateErrors?: ValidateProfileError[]
 }
 
 export interface ProfileCardProps {

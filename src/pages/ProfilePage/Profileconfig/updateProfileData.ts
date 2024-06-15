@@ -2,8 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { StateSchema, ThunkExtraArg } from "app/Providers/StoreProvider/config/StateSchema";
 import { AxiosError } from 'axios'
 import { loginActions } from "entities/LoginSlice";
-import { ProfileProps } from "./Profiletype";
+import { ProfileProps, ValidateProfileError } from "./Profiletype";
 import { useSelector } from "react-redux";
+import { valodProfoleData } from "../ValidateProfile/ValidateProfile";
 
 
 
@@ -12,6 +13,12 @@ export const updateProfileData = createAsyncThunk<ProfileProps, void, {extra: Th
     async (_, {extra, rejectWithValue, getState})=>{
         
         const dataForm = getState().profile.data
+
+        const errors = valodProfoleData(dataForm)
+
+        if(errors.length) {
+            return rejectWithValue(errors)
+        }
 
         try {
 
@@ -25,7 +32,7 @@ export const updateProfileData = createAsyncThunk<ProfileProps, void, {extra: Th
                 return rejectWithValue(e.message)
             }
             
-            return rejectWithValue("error")
+            return rejectWithValue([ValidateProfileError.SERVER_ERROR])
            
         }
     }

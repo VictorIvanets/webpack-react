@@ -31,13 +31,13 @@
     }
   ],
   "profile": {
-    "first": "Віктор",
-    "lastname": "Іванець",
-    "age": "44",
-    "currency": "EUR",
-    "country": "Україна",
+    "first": "Victor",
+    "lastname": "Ivanets",
+    "age": "35",
+    "currency": "UAH",
+    "country": "Ukraine",
     "city": "Житомир",
-    "username": "multik",
+    "username": "MULTIK",
     "avatar": "https://ivanetsvictor.site/img/My_foto.png"
   }
 }
