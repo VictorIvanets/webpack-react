@@ -10,3 +10,5 @@ export type AppThunkDispatchLogin = ThunkDispatch<RootStateLogin, any, Action>;
 type RootStateData = any;
 export type AppThunkDispatchData = ThunkDispatch<RootStateData, any, Action>;
 
+
+

@@ -22,7 +22,9 @@ const AppRouter = () => {
         return <Route
                 key={route.path}
                 path={route.path}
-                element={route.authOnli ? <RequireAuth>{element}</RequireAuth> : element}
+                element={route.authOnli 
+                    ? <RequireAuth>{element}</RequireAuth> 
+                    : element}
             />
         },[])
 

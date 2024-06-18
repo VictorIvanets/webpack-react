@@ -29,6 +29,9 @@ export const SideBar = memo(() => {
             <NavLink className="margin1" to={RoutePath.main}>{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to={RoutePath.about}>{t("Про сайт")}</NavLink>
             <NavLink className="margin1" to={RoutePath.load}>{t("Прелоадер")}</NavLink>
+            <NavLink className="margin1" to={RoutePath.article}>{t("ARTICLES")}</NavLink>
+            <NavLink className="margin1" to={RoutePath.article_datails}>{t("Detailspage")}</NavLink>
+
         </div>
 
 
