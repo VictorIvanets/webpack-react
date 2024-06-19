@@ -1,25 +1,22 @@
-import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema"
 import { useTheme } from "app/Providers/Theme/useTheme"
-import { memo, useCallback, useEffect, useState } from "react"
+import { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { className } from "shared/lib/helpers/classNames/classNames"
-import { profileActions, profileReduser } from "../Profileconfig/ProfileSlice"
-import { AppThunkDispatchData, AppThunkDispatchLogin } from "shared/lib/helpers/AppDispatch/AppDispath"
-import { Currency, ProfileCardProps, ProfileProps } from "../Profileconfig/Profiletype"
+import { profileActions } from "../Profileconfig/ProfileSlice"
+import { AppThunkDispatchData } from "shared/lib/helpers/AppDispatch/AppDispath"
+import { Currency, ProfileCardProps } from "../Profileconfig/Profiletype"
 import Button from "widgets/Button/Button"
 import { PreLoader } from "widgets/PreLoader"
 import { Input } from "widgets/Input"
 import { updateProfileData } from "../Profileconfig/updateProfileData"
 import Select from "widgets/Select/Select"
-// import { fetchProfileData } from "../Profileconfig/fetchProfileData"
 
 export const currencyOptions = [
     {value: Currency.UAH, content: Currency.UAH},
     {value: Currency.USD, content: Currency.USD},
     {value: Currency.EUR, content: Currency.EUR}
 ]
-
 export const ProfileCard = memo((
     {
         data, 
@@ -38,7 +35,10 @@ export const ProfileCard = memo((
     const dispatchData = useDispatch<AppThunkDispatchData>();
     const {theme} = useTheme()
     const {t} = useTranslation()
-    const neterror = typeof error === "string" ? error.toString() : "HZ ERROR"
+
+    // console.log(error)
+    // console.log(readonly)
+    // console.log(data)
 
     const dispatch = useDispatch()
 
@@ -57,10 +57,8 @@ export const ProfileCard = memo((
     }, [dispatch])
 
 
-
-
     return (<div className="profilecardbox">
-        { error ? <h1 className="absolutecenter">{neterror}</h1> : !isLoading && data ?
+        {!isLoading && data ?
         <div className={className('profilecard', {profilecarddarks: (theme === "dark" ? true : false)}, [])}>
             
             <div className="profilecard__info">
@@ -83,7 +81,7 @@ export const ProfileCard = memo((
             </div>
 
 
-            {<div className={className('profilecard__data', {readonlyinput: readonly ? false : true}, [])}>
+            {<div className={className('profilecard__data', {readonlyinput: readonly ? false : true, invaliddata: error ? true : false}, [])}>
                     
                     {readonly 
                     ?                 
@@ -132,7 +130,8 @@ export const ProfileCard = memo((
                         value={data?.currency}
                         />
 
-                    <div className="profilecard__data__btn">
+                    <div className={className('profilecard__data__btn', {}, [])}
+                   >
                     <Button 
                             onClick={onCancelEdit}
                             className="profilecard__btn cancel">
@@ -144,6 +143,7 @@ export const ProfileCard = memo((
                             {t("Зберегти")}
                     </Button>
                     </div>
+                    {error && Array.isArray(error) ? error.map((err: string) =>(<h3  key={err} className="errdatatext">{err}</h3>)) : ''}
                     </div> 
                     : ''}
                 

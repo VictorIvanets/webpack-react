@@ -1,0 +1,146 @@
+@mixin alltext
+    h1, h2, h3
+        color: $colorDeepLight
+        margin-bottom: 0.5rem
+        a, p
+            margin-bottom: 1rem
+        code
+            color: #001d30
+            
+    
+@mixin maintheme
+    width: 100%
+    height: 100%
+    // background: $colorLight
+    color: $colorMain
+    margin-bottom: 2rem
+    @include alltext
+
+
+
+.ArticlesDetails
+    @include maintheme
+    &__content
+        width: 100%
+        height: 100%
+        overflow: auto
+        scrollbar: 0px
+
+        &__box
+            width: 100%
+            padding-right: 1rem
+        &__top
+            display: flex
+            justify-content: space-between
+            margin-bottom: 2rem
+        &__header
+            width: 100%
+            margin-right: 3rem
+            display: flex
+            flex-direction: column
+            flex-wrap: nowrap
+            align-content: flex-end
+            justify-content: flex-end
+            align-items: flex-end
+
+    &__content::-webkit-scrollbar
+        width: 7px
+    &__content::-webkit-scrollbar-thumb
+        width: 7px
+        background: #000
+
+
+
+
+.Articalh1
+    font-size: 5rem
+
+
+.ArticlesDetailsImage
+    @include maintheme
+    text-align: center
+    &__img
+        width: 100%
+
+
+.ArticlesDetailsText
+    @include maintheme
+    text-align: justify
+
+
+.ArticlesDetailsCode
+    @include maintheme
+    text-align: left
+    margin-bottom: 3rem
+
+    &__box
+        background: #ebebeb1c
+        min-height: max-content
+        max-height: 20rem
+        padding: 1rem
+        overflow: auto
+        box-shadow: 3px 3px 5px #0000009f
+        border-radius: 3px
+        position: relative
+        &__btn
+            position: absolute
+            top: 0
+            right: 0
+            box-shadow: 3px 3px 5px #0000009f
+    &__code
+        font-size: 1.5rem
+        width: 100%
+    .copyok
+        background: #ffffff54
+        position: absolute
+        top: 50%
+        left: 50%
+        z-index: 5
+        transform: translate(-50%, -50%)
+        animation: opacity 1.5s
+        border-radius: 10px
+        @keyframes opacity
+            0%
+                opacity: 0
+            30%
+                opacity: 1
+            70%
+                opacity: 1
+            100%
+                opacity: 0
+
+                
+        &__text
+            color: #002c1f
+            padding: 3rem
+           
+
+
+        
+        
+
+
+
+
+
+.ArticlesDetailsdark, .ArticlesDetailsImagedark, .ArticlesDetailsTextdark, .ArticlesDetailsCodedark
+    background: $colorMain
+    color: $colorLight
+    h1, h2, h3, a, p
+        color:  rgb(151, 170, 180)
+    code
+        color: #ffe600
+
+
+.ArticlesDetailsruby, .ArticlesDetailsImageruby, .ArticlesDetailsTextruby, .ArticlesDetailsCoderuby
+    background: $COLACCENT
+    color: $COLSECOND
+    h1, h2, h3, a, p
+        color: $COLSECOND
+    code
+        color: #e6db7b
+
+
+
+
+

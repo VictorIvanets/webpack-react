@@ -7,12 +7,13 @@ export interface User {
 }
 
 export interface userSchema {
-  authData?: User
+  authData?: User,
+  _initer?: boolean
 }
 
 
 const initialState: userSchema = {
-
+  _initer: false
 }
   
 export const userSlise = createSlice({
@@ -27,6 +28,7 @@ export const userSlise = createSlice({
           if(user){
             state.authData = JSON.parse(user)
           }
+          state._initer = true
         },
         logout: (state) => {
             state.authData = undefined

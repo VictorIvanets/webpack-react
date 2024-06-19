@@ -20,7 +20,7 @@ export const SideBar = memo(() => {
     }
 
     return (
-        <div className={className('sidebar', {sidebardark: (theme === "dark" ? true : false), collaps: (collaps === true ? true : false)}, [])}>
+        <div className={className('sidebar', {sidebardark: (theme === "dark" ? true : false), sidebarruby: (theme === "ruby" ? true : false), collaps: (collaps === true ? true : false)}, [])}>
             
         <div className='sidebarbox'>
         
@@ -29,6 +29,9 @@ export const SideBar = memo(() => {
             <NavLink className="margin1" to={RoutePath.main}>{t("Головна сторінка")}</NavLink>
             <NavLink className="margin1" to={RoutePath.about}>{t("Про сайт")}</NavLink>
             <NavLink className="margin1" to={RoutePath.load}>{t("Прелоадер")}</NavLink>
+            <NavLink className="margin1" to={RoutePath.article}>{t("ARTICLES")}</NavLink>
+            <NavLink className="margin1" to={RoutePath.article_datails}>{t("Detailspage")}</NavLink>
+
         </div>
 
 
@@ -40,7 +43,7 @@ export const SideBar = memo(() => {
 
 
 
-            <button className={className('sidebtn', {sidebarbtndark: (theme === "dark" ? true : false), sidebtn90: (collaps === true ? true : false)}, [])}
+            <button className={className('sidebtn', {sidebarbtndark: (theme === "dark" ? true : false), sidebarbtnruby: (theme === "ruby" ? true : false), sidebtn90: (collaps === true ? true : false)}, [])}
             onClick={toggle}>{collaps ? t("SIDEBAR"):t('TO HIDE')}</button>
             </div>
 

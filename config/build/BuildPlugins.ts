@@ -32,7 +32,8 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new ReactRefreshWebpackPlugin(),
         new BundleAnalyzerPlugin({
           openAnalyzer: false
-        }),
+        })
+
     ]
 }
 

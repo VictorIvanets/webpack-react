@@ -29,10 +29,9 @@ export function ProfilePage(){
     const dispatch = useDispatch()
     const dataForm = useSelector((state: StateSchema) => state?.profile?.form || undefined)
     const isLoading = useSelector((state: StateSchema) => state?.profile?.isLoading || undefined)
-    const error = useSelector((state: StateSchema) => state?.profile?.error || '')
+    const error = useSelector((state: StateSchema) => state?.profile?.error || undefined)
     const readonly = useSelector((state: StateSchema) => state?.profile?.readonly || false)
     const authData = useSelector((state: StateSchema) => state.user.authData)
-    console.log(authData)
 
 
     useEffect(()=>{
