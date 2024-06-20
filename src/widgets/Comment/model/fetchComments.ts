@@ -2,23 +2,36 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkExtraArg } from "app/Providers/StoreProvider/config/StateSchema";
 import { AxiosError } from 'axios'
 import { loginActions } from "entities/LoginSlice";
-import { ProfileProps } from "./Profiletype";
+import { Comment } from "../CommentTypes/commentsTypes";
 
 
 
 
-export const fetchProfileData = createAsyncThunk<
-    ProfileProps, 
-    string, 
+
+
+export const fetchComments = createAsyncThunk<
+    Comment[], 
+    string | undefined, 
     {extra: ThunkExtraArg}
-    >('profile/fetchProfileData',
-        async (id, thunkApi)=>{
+    >('comment/fetchComments',
+        async (articleId, thunkApi)=>{
+
 
         const {extra, rejectWithValue} = thunkApi
 
+        if(!articleId) {
+            return rejectWithValue('not id')
+        }
+
+
         try {
 
-            const response = await extra.api.get<ProfileProps>(`/profile/${id}`)
+            const response = await extra.api.get<Comment[]>(`/comments`, {
+                    params: {
+                        articleId,
+                        _expand: 'user'
+                    }
+                })
             
             return response.data
            

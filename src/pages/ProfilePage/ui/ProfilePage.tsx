@@ -32,10 +32,11 @@ export function ProfilePage(){
     const error = useSelector((state: StateSchema) => state?.profile?.error || undefined)
     const readonly = useSelector((state: StateSchema) => state?.profile?.readonly || false)
     const authData = useSelector((state: StateSchema) => state.user.authData)
+    const userId = useSelector((state: StateSchema) => state?.user?.authData?.id)
 
 
     useEffect(()=>{
-        dispatchLogin(fetchProfileData())
+        dispatchLogin(fetchProfileData(userId))
     },[dispatchLogin])
 
 

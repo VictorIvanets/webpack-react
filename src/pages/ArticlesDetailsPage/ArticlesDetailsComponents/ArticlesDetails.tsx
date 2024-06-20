@@ -7,9 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppThunkDispatchData } from "shared/lib/helpers/AppDispatch/AppDispath";
 import { memo, useCallback, useEffect } from "react";
 import { fethArticalById } from "../ArticlesDetailsConfig/fethArticalById";
-import { ArticlesDetailsSchema } from "../ArticlesDetailsConfig/ArticlesDetailsSchema";
 import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema";
-import { PreLoader } from "widgets/PreLoader";
 import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";
 import { ArticleBlock, ArticleBlockType } from "pages/ArticlesPage/articleTypes/articleTypes";
 import ArticlesDetailsCode from "./ArticlesDetailsCode";
@@ -39,7 +37,6 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
     const data = useSelector((state: StateSchema) => state?.ArticlesDetail?.data || undefined)
     const error = useSelector((state: StateSchema) => state?.ArticlesDetail?.error || undefined)
     const isLoading = useSelector((state: StateSchema) => state?.ArticlesDetail?.isLoading || undefined)
-    // const isLoading = true
 
 
     const renderBlock = useCallback((block: ArticleBlock)=>{
@@ -105,8 +102,9 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
             <h1 className='margin1'>{contentHeader}</h1>
         </div>
             <div className="ArticlesDetails__content">
-                {content}
+                {content}  
             </div>
+        
 
         </div>
         </DinamicModulLoader>;
