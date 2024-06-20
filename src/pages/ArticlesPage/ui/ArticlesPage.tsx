@@ -1,6 +1,7 @@
 import { useTheme } from "app/Providers/Theme/useTheme";
 import ArticlesDetails from "pages/ArticlesDetailsPage/ArticlesDetailsComponents/ArticlesDetails";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 import className from "shared/lib/helpers/classNames/classNames";
 
 export const ArticlesPage = () => {
@@ -17,9 +18,9 @@ export const ArticlesPage = () => {
         <div className={className('artipage__header', {artipagedark__header: (theme === "dark" ? true : false), artipageruby__header: (theme === "ruby" ? true : false)},  [])}>
             <h1 className='margin1'> {t("ARTICLES")}</h1>
         </div>
+        <NavLink className="margin1" to="/article_datails/1">ДжаваСкріпт</NavLink>
+        <NavLink className="margin1" to="/article_datails/2">Пітон</NavLink>
 
-            
-            <p>artical</p>
         </div>
     );
 };

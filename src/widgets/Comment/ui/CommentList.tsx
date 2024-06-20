@@ -29,9 +29,7 @@ export const CommentList = memo(({comments, isLoading, error}: CommentListProps)
             
             <CommentAdd/>
             {
-            isLoading 
-            ? <PreLoaderGradient/> 
-            : comments?.length 
+            comments?.length 
             ?   comments?.map(item => <CommentCard 
                 comments ={item}
                 key={item.id}
@@ -39,9 +37,6 @@ export const CommentList = memo(({comments, isLoading, error}: CommentListProps)
             : error 
             ? <h2>{error.toString()}</h2>
             : <h2>No comments</h2>}
-    
-
-
         </div>
     );
 });

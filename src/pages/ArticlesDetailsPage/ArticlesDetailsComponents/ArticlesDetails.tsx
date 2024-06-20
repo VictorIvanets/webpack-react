@@ -7,15 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppThunkDispatchData } from "shared/lib/helpers/AppDispatch/AppDispath";
 import { memo, useCallback, useEffect } from "react";
 import { fethArticalById } from "../ArticlesDetailsConfig/fethArticalById";
-import { ArticlesDetailsSchema } from "../ArticlesDetailsConfig/ArticlesDetailsSchema";
 import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema";
-import { PreLoader } from "widgets/PreLoader";
 import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";
 import { ArticleBlock, ArticleBlockType } from "pages/ArticlesPage/articleTypes/articleTypes";
 import ArticlesDetailsCode from "./ArticlesDetailsCode";
 import ArticlesDetailsText from "./ArticlesDetailsText";
 import ArticlesDetailsImage from "./ArticlesDetailsImage";
-import { CommentList } from "widgets/Comment";
 
 
 interface ArticlesDetailsProps {
@@ -40,7 +37,6 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
     const data = useSelector((state: StateSchema) => state?.ArticlesDetail?.data || undefined)
     const error = useSelector((state: StateSchema) => state?.ArticlesDetail?.error || undefined)
     const isLoading = useSelector((state: StateSchema) => state?.ArticlesDetail?.isLoading || undefined)
-    // const isLoading = true
 
 
     const renderBlock = useCallback((block: ArticleBlock)=>{

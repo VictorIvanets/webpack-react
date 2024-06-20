@@ -8,9 +8,9 @@ import { valodProfoleData } from "../ValidateProfile/ValidateProfile";
 
 
 
-export const updateProfileData = createAsyncThunk<ProfileProps, void, {extra: ThunkExtraArg, state: StateSchema}>(
+export const updateProfileData = createAsyncThunk<ProfileProps, string, {extra: ThunkExtraArg, state: StateSchema}>(
     'profile/updateProfileData',
-    async (_, {extra, rejectWithValue, getState})=>{
+    async (id, {extra, rejectWithValue, getState})=>{
         
         const dataForm = getState().profile.data
 
@@ -22,7 +22,7 @@ export const updateProfileData = createAsyncThunk<ProfileProps, void, {extra: Th
 
         try {
 
-            const response = await extra.api.put<ProfileProps>('/profile', dataForm)
+            const response = await extra.api.put<ProfileProps>(`/profile/${id}`, dataForm)
             
             return response.data
            
