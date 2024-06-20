@@ -44,7 +44,6 @@
       "username": "admin",
       "password": "123",
       "avatar": "https://byuc.wordpress.com/wp-content/uploads/2012/07/avat-2.jpg"
-
     },
     {
       "id": 2,
@@ -53,7 +52,19 @@
       "avatar": "https://ivanetsvictor.site/img/My_foto.png"
     }
   ],
-  "profile": {
+  "profile1": {
+    "id": "1",
+    "first": "Admin",
+    "lastname": "Newman",
+    "age": "35",
+    "currency": "UAH",
+    "country": "Ukraine",
+    "city": "Kyiv",
+    "username": "JSCOOL",
+    "avatar": "https://byuc.wordpress.com/wp-content/uploads/2012/07/avat-2.jpg"
+  },
+  "profile2": {
+    "id": "2",
     "first": "Victor",
     "lastname": "Ivanets",
     "age": "44",
@@ -65,7 +76,7 @@
   },
 
 
-  
+
   "news": [
     {
       "id": "1",

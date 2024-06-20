@@ -7,13 +7,19 @@ import { ProfileProps } from "./Profiletype";
 
 
 
-export const fetchProfileData = createAsyncThunk<ProfileProps, void, {extra: ThunkExtraArg}>(
-    'profile/fetchProfileData',
-    async (_, {extra, rejectWithValue})=>{
+export const fetchProfileData = createAsyncThunk<
+    ProfileProps, 
+    string, 
+    {extra: ThunkExtraArg}
+    >('profile/fetchProfileData',
+        async (id, thunkApi)=>{
+
+        const {extra, rejectWithValue} = thunkApi
+
 
         try {
 
-            const response = await extra.api.get<ProfileProps>('/profile')
+            const response = await extra.api.get<ProfileProps>(`/profile${id}`)
             
             return response.data
            
