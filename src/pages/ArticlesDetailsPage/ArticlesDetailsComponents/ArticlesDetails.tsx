@@ -15,6 +15,7 @@ import { ArticleBlock, ArticleBlockType } from "pages/ArticlesPage/articleTypes/
 import ArticlesDetailsCode from "./ArticlesDetailsCode";
 import ArticlesDetailsText from "./ArticlesDetailsText";
 import ArticlesDetailsImage from "./ArticlesDetailsImage";
+import { CommentList } from "widgets/Comment";
 
 
 interface ArticlesDetailsProps {
@@ -105,8 +106,9 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
             <h1 className='margin1'>{contentHeader}</h1>
         </div>
             <div className="ArticlesDetails__content">
-                {content}
+                {content}  
             </div>
+        
 
         </div>
         </DinamicModulLoader>;

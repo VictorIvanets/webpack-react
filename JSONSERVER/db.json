@@ -23,10 +23,16 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
+      "text": "some comment 3",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "4",
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
@@ -36,12 +42,15 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://byuc.wordpress.com/wp-content/uploads/2012/07/avat-2.jpg"
+
     },
     {
       "id": 2,
       "username": "multik",
-      "password": "5555"
+      "password": "5555",
+      "avatar": "https://ivanetsvictor.site/img/My_foto.png"
     }
   ],
   "profile": {
@@ -54,6 +63,9 @@
     "username": "MULTIK",
     "avatar": "https://ivanetsvictor.site/img/My_foto.png"
   },
+
+
+  
   "news": [
     {
       "id": "1",
