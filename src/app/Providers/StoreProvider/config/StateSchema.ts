@@ -6,6 +6,7 @@ import { LoginSchema } from "features/AuthByUserName/LoginForm";
 import { ArticlesDetailsSchema } from "pages/ArticlesDetailsPage/ArticlesDetailsConfig/ArticlesDetailsSchema";
 import { ProfileSchema } from "pages/ProfilePage";
 import { NavigateOptions, To } from "react-router-dom";
+import { CommentSchema } from "widgets/Comment";
 
 
 
@@ -16,6 +17,7 @@ export interface StateSchema {
     login?: LoginSchema
     profile?: ProfileSchema
     ArticlesDetail?: ArticlesDetailsSchema
+    Comments?: CommentSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

@@ -1,7 +1,7 @@
 import { useTheme } from "app/Providers/Theme/useTheme"
 import { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { className } from "shared/lib/helpers/classNames/classNames"
 import { profileActions } from "../Profileconfig/ProfileSlice"
 import { AppThunkDispatchData } from "shared/lib/helpers/AppDispatch/AppDispath"
@@ -11,6 +11,7 @@ import { PreLoader } from "widgets/PreLoader"
 import { Input } from "widgets/Input"
 import { updateProfileData } from "../Profileconfig/updateProfileData"
 import Select from "widgets/Select/Select"
+import { StateSchema } from "app/Providers/StoreProvider/config/StateSchema"
 
 export const currencyOptions = [
     {value: Currency.UAH, content: Currency.UAH},
@@ -35,12 +36,9 @@ export const ProfileCard = memo((
     const dispatchData = useDispatch<AppThunkDispatchData>();
     const {theme} = useTheme()
     const {t} = useTranslation()
-
-    // console.log(error)
-    // console.log(readonly)
-    // console.log(data)
-
     const dispatch = useDispatch()
+    const userId = useSelector((state: StateSchema) => state?.user?.authData?.id)
+
 
     const onEdit = useCallback(()=>{
         dispatch(profileActions.setReadonly(true))
@@ -53,7 +51,7 @@ export const ProfileCard = memo((
 
     const onSavelEdit = useCallback(()=>{
         dispatch(profileActions.saveUpdateProfile())
-        dispatchData(updateProfileData())
+        dispatchData(updateProfileData(userId))
     }, [dispatch])
 
 
