@@ -7,3 +7,21 @@ export interface Comment {
     articleId?: string
     userId?: string
 }
+
+
+export interface CommentProfileProps {
+    id?: string,
+    first?: string
+    lastname?: string
+    age?: string
+    country?: string
+    city?: string
+    username?: string
+    avatar?: string
+}
+
+export interface CommentProfileSchema {
+    data?: CommentProfileProps
+    isLoading: boolean
+    error?: string | string[] | unknown
+}

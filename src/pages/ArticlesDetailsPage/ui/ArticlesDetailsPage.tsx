@@ -37,7 +37,6 @@ export const ArticlesDetailsPage = (props:ArticlesDetailsPageProps) => {
     useEffect(()=>{
         dispatchData(fetchComments("1"))
     },[dispatchData, id])
-     console.log(id)
 
 
     return (

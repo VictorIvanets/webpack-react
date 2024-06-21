@@ -12,54 +12,54 @@
     }
   ],
   "comments": [
-      {
-        "id": "1",
-        "text": "some comment",
-        "articleId": "1",
-        "userId": "1"
-      },
-      {
-        "id": "2",
-        "text": "some comment 2",
-        "articleId": "1",
-        "userId": "2"
-      },
-      {
-        "id": "3",
-        "text": "some comment 3",
-        "articleId": "1",
-        "userId": "2"
-      },
-      {
-        "id": "4",
-        "text": "some comment 3",
-        "articleId": "1",
-        "userId": "1"
-      },
-      {
-        "id": "5",
-        "text": "some comment",
-        "articleId": "2",
-        "userId": "1"
-      },
-      {
-        "id": "6",
-        "text": "some comment 2",
-        "articleId": "2",
-        "userId": "2"
-      },
-      {
-        "id": "7",
-        "text": "some comment 3",
-        "articleId": "2",
-        "userId": "2"
-      },
-      {
-        "id": "8",
-        "text": "some comment 3",
-        "articleId": "2",
-        "userId": "1"
-      }
+    {
+      "id": "1",
+      "text": "some comment",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "text": "some comment 2",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "3",
+      "text": "some comment 3",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "4",
+      "text": "some comment 3",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "text": "some comment",
+      "articleId": "2",
+      "userId": "1"
+    },
+    {
+      "id": "6",
+      "text": "some comment 2",
+      "articleId": "2",
+      "userId": "2"
+    },
+    {
+      "id": "7",
+      "text": "some comment 3",
+      "articleId": "2",
+      "userId": "2"
+    },
+    {
+      "id": "8",
+      "text": "some comment 3",
+      "articleId": "2",
+      "userId": "1"
+    }
   ],
   "users": [
     {
