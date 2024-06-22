@@ -7,6 +7,7 @@ import { Comment } from '../CommentTypes/commentsTypes'
 import { StateSchema } from 'app/Providers/StoreProvider/config/StateSchema'
 import { CommentSchema } from './CommentSchema'
 import { fetchComments } from './fetchComments'
+import { addComment } from './addComment'
   
   
   export const commentsAdapter = createEntityAdapter({
@@ -45,7 +46,10 @@ import { fetchComments } from './fetchComments'
             .addCase(fetchComments.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
-            })}
+            })
+          }
+
+
   })
 
   export const { actions: commentSliceActions } = commentSlice

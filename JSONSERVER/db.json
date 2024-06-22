@@ -56,9 +56,138 @@
     },
     {
       "id": "8",
-      "text": "some comment 3",
+      "text": "JS 1 Multik",
+      "articleId": "1",
+      "userId": 2
+    },
+    {
+      "text": "JAVASCRIPT",
+      "id": "67625",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "PITON",
+      "id": "49840",
+      "articleId": "2",
+      "userId": "2"
+    },
+    {
+      "text": "piton2",
+      "id": "02158",
       "articleId": "2",
       "userId": "1"
+    },
+    {
+      "text": "PPPP",
+      "id": "13349",
+      "articleId": "2",
+      "userId": "1"
+    },
+    {
+      "text": "NEW JAVO",
+      "id": "84535",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "sass",
+      "id": "14491",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "mhj",
+      "id": "70939",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "efdwewed",
+      "id": "41166",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "New comments",
+      "id": "48309",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "dwedwfweffqwefqwef",
+      "id": "60589",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "JAVANEw",
+      "id": "30041",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "fdWEFQAEWFQAWEFQAW",
+      "id": "65974",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "QS_BL3h"
+    },
+    {
+      "text": "аеркррвер",
+      "id": "62221",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "ewefgegwkgowrtgwtgwthwhwrth",
+      "id": "18831",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "hj",
+      "id": "24741",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "ffg",
+      "id": "44642",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "s",
+      "id": "58696",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "s",
+      "id": "79304",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "ADD NEW COMMENT",
+      "id": "54441",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "text": "ADD PITON",
+      "id": "86925",
+      "articleId": "2",
+      "userId": "1"
+    },
+    {
+      "text": "ADD PITTONSSS",
+      "id": "63127",
+      "articleId": "2",
+      "userId": "2"
     }
   ],
   "users": [

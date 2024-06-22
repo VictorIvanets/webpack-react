@@ -12,6 +12,7 @@ import { AppThunkDispatchData } from "shared/lib/helpers/AppDispatch/AppDispath"
 import { useEffect, useState } from "react";
 import { fetchComments } from "widgets/Comment/model/fetchComments";
 import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";
+import CommentAdd from "widgets/Comment/ui/CommentAdd";
 
 
 
@@ -32,11 +33,13 @@ export const ArticlesDetailsPage = (props:ArticlesDetailsPageProps) => {
     const isLoading = useSelector((state: StateSchema) => state?.Comments?.isLoading || undefined)
     const error = useSelector((state: StateSchema) => state?.Comments?.error || undefined)
     const dispatchData = useDispatch<AppThunkDispatchData>();
+    const updateComments = useSelector((state: StateSchema) => state?.addCommentUser?.isLoading)
 
 
-    useEffect(()=>{
-        dispatchData(fetchComments("1"))
-    },[dispatchData, id])
+
+    useEffect(()=>{ 
+            dispatchData(fetchComments(id))
+    },[dispatchData, id, updateComments === true])
 
 
     return (

@@ -50,8 +50,9 @@ export const CommentCard = memo(({comments, isLoading}: CommentCardProps) => {
             </Button>
             {userComment && <UserComments userId={comments.userId}/>}
             <div className="commentcard__title">
-                <h3>{comments.user.username}</h3>
-                <h3>{comments.id}</h3>
+                <h3>user: {comments.user.username}</h3>
+                <h3>com.id: {comments.id}</h3>
+                <h3>art.id: {comments.articleId}</h3>
             </div>
             <div className="commentcard__text">
             <p>{comments.text}</p>

@@ -3,7 +3,7 @@ import { User } from "entities/UserSlise"
 export interface Comment {
     id: string
     text: string
-    user: User
+    user?: User
     articleId?: string
     userId?: string
 }
@@ -25,3 +25,18 @@ export interface CommentProfileSchema {
     isLoading: boolean
     error?: string | string[] | unknown
 }
+
+export interface addCommentType {
+    id?: string
+    text?: string
+    articleId?: string
+    userId?: string
+}
+export interface addCommentSchema {
+    data?: addCommentType
+    isLoading?: boolean
+    error?: string | string[] | unknown
+}
+
+
+
