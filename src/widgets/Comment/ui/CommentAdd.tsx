@@ -26,7 +26,6 @@ export const CommentAdd = memo(() => {
     const dispatchData = useDispatch<AppThunkDispatchData>();
     const randomId = new Date().getTime().toString().split("").splice(8,6).join("")
     const isLoading = useSelector((state: StateSchema) => state?.addCommentUser?.isLoading)
-
     const [value, setValue] = useState('')
     const [valid, setValid] = useState(false)
 

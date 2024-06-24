@@ -9,6 +9,7 @@ export enum ArticleBlockType {
 export interface ArticleBlockBase {
     id: string
     type: ArticleBlockType 
+    paragraphs?: string[]
 }
 
 
@@ -32,8 +33,6 @@ export interface ArticleTextBlock extends ArticleBlockBase {
     type: ArticleBlockType.TEXT
     title?: string
     paragraphs: string[]
-
-
 }
 
 
@@ -54,4 +53,9 @@ export interface Article {
     createdAt: string
     type: ArticleType[]
     blocks: ArticleBlock[]
+}
+
+export enum ArticleView {
+    BIG = "BIG",
+    SMALL= "SMALL",
 }

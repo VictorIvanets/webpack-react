@@ -31,7 +31,7 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
     const dispatchData = useDispatch<AppThunkDispatchData>();
 
     useEffect(()=>{
-        dispatchData(fethArticalById(id))
+        dispatchData(fethArticalById(`/${id}`))
     },[dispatchData, id])
 
     const data = useSelector((state: StateSchema) => state?.ArticlesDetail?.data || undefined)

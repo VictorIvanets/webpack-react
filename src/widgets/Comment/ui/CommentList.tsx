@@ -2,7 +2,7 @@ import { useTheme } from "app/Providers/Theme/useTheme";
 import { useTranslation } from "react-i18next";
 import className from "shared/lib/helpers/classNames/classNames";
 import CommentCard from "./CommentCard";
-import CommentAdd from "./CommentAdd";
+import {CommentAdd} from "../index";
 import { memo } from "react";
 import { Comment } from "../CommentTypes/commentsTypes";
 import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";

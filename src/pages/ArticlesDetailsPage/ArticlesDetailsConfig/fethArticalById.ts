@@ -21,7 +21,7 @@ export const fethArticalById = createAsyncThunk<
 
         try {
 
-            const response = await extra.api.get<Article>(`/news/${articleId}`)
+            const response = await extra.api.get<Article>(`/news${articleId}`)
             
             return response.data
            

@@ -1,17 +1,11 @@
 import {
     PayloadAction,
-    createEntityAdapter,
     createSlice,
   } from '@reduxjs/toolkit'
-import { Comment, addCommentSchema, addCommentType } from '../CommentTypes/commentsTypes'
-import { StateSchema } from 'app/Providers/StoreProvider/config/StateSchema'
-import { CommentSchema } from './CommentSchema'
-import { fetchComments } from './fetchComments'
+import { addCommentSchema, addCommentType } from '../CommentTypes/commentsTypes'
 import { addComment } from './addComment'
   
   
-
-
 
   const initialState:addCommentSchema = { 
     isLoading: false,
@@ -38,7 +32,7 @@ import { addComment } from './addComment'
               state.error = undefined
               state.isLoading = true
               })
-            .addCase(addComment.fulfilled, (state, action:     PayloadAction<addCommentType>) => {
+            .addCase(addComment.fulfilled, (state, action: PayloadAction<addCommentType>) => {
               state.isLoading = false
               state.data = action.payload
               state.error = undefined
@@ -46,8 +40,7 @@ import { addComment } from './addComment'
             .addCase(addComment.rejected, (state, action) => {
               state.isLoading = false
               state.error = action.payload
-              })
-          
+              })     
           }
 
 
