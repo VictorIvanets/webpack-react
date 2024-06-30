@@ -12,13 +12,13 @@ export const fetchProfileData = createAsyncThunk<
     string, 
     {extra: ThunkExtraArg}
     >('profile/fetchProfileData',
-        async (id, thunkApi)=>{
+        async (userid, thunkApi)=>{
 
         const {extra, rejectWithValue} = thunkApi
 
         try {
 
-            const response = await extra.api.get<ProfileProps>(`/profile/${id}`)
+            const response = await extra.api.get<ProfileProps>(`/profile/${userid}`)
             
             return response.data
            

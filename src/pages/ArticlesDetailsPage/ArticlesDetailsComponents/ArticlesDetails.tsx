@@ -13,6 +13,8 @@ import { ArticleBlock, ArticleBlockType } from "pages/ArticlesPage/articleTypes/
 import ArticlesDetailsCode from "./ArticlesDetailsCode";
 import ArticlesDetailsText from "./ArticlesDetailsText";
 import ArticlesDetailsImage from "./ArticlesDetailsImage";
+import { useNavigate } from "react-router-dom";
+import Button from "widgets/Button/Button";
 
 
 interface ArticlesDetailsProps {
@@ -29,9 +31,9 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
     const {theme} = useTheme()
     const {t} = useTranslation()
     const dispatchData = useDispatch<AppThunkDispatchData>();
-
+    const navigate = useNavigate();
     useEffect(()=>{
-        dispatchData(fethArticalById(id))
+        dispatchData(fethArticalById(`/${id}`))
     },[dispatchData, id])
 
     const data = useSelector((state: StateSchema) => state?.ArticlesDetail?.data || undefined)
@@ -101,7 +103,9 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
         <div className={className('artidetapage__header', {artidetapagedark__header: (theme === "dark" ? true : false), artidetapageruby__header: (theme === "ruby" ? true : false)},  [])}>
             <h1 className='margin1'>{contentHeader}</h1>
         </div>
+         
             <div className="ArticlesDetails__content">
+            <Button className='btnback' onClick={()=>navigate(-1)}>BACK</Button>
                 {content}  
             </div>
         

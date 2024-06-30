@@ -36,6 +36,7 @@
 
 
 .commentcard
+    // position: relative
     width: 100%
     padding: 1rem
     margin-bottom: 1rem
@@ -101,7 +102,6 @@
         width: 100%
         height: 5rem
         font-size: 1.5rem
-        background: $colorLight !important
         box-shadow: inset 3px 2px 3px #0000006e
         margin-right: 1rem
 
@@ -110,7 +110,13 @@
         height: 5rem
         margin: 0.2rem
         font-size: 1.3rem
-        
+    &__form
+        display: flex
+        width: 100%
+.commenterror
+    border-right: 15px solid red   
+    border-radius: 3px
+    background: red
 
 .commentadddark
     background: $colorMain

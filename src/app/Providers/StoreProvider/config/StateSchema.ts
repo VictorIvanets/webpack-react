@@ -7,6 +7,7 @@ import { ArticlesDetailsSchema } from "pages/ArticlesDetailsPage/ArticlesDetails
 import { ProfileSchema } from "pages/ProfilePage";
 import { NavigateOptions, To } from "react-router-dom";
 import { CommentSchema } from "widgets/Comment";
+import { CommentProfileSchema, addCommentSchema } from "widgets/Comment/CommentTypes/commentsTypes";
 
 
 
@@ -18,6 +19,9 @@ export interface StateSchema {
     profile?: ProfileSchema
     ArticlesDetail?: ArticlesDetailsSchema
     Comments?: CommentSchema
+    CommentUser?: CommentProfileSchema
+    addCommentUser?: addCommentSchema
+
 }
 
 export type StateSchemaKey = keyof StateSchema

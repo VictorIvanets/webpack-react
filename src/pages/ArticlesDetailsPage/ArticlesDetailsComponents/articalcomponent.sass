@@ -16,11 +16,13 @@
 
 
 
+
 .ArticlesDetails
     @include maintheme
     &__content
         width: 100%
         height: max-content
+        position: relative
 
         &__box
             width: 100%
@@ -38,7 +40,10 @@
             align-content: flex-end
             justify-content: flex-end
             align-items: flex-end
-
+        &__img
+            max-height: 30rem
+    .btnback
+        background: $colorLight
 
 
 
@@ -107,9 +112,13 @@
             padding: 3rem
            
 
-
         
-        
+.btnback
+    background: none
+    border: none
+    position: fixed
+    z-index: 3
+    border-radius: 4px
 
 
 
@@ -118,19 +127,24 @@
 .ArticlesDetailsdark, .ArticlesDetailsImagedark, .ArticlesDetailsTextdark, .ArticlesDetailsCodedark
     background: $colorMain
     color: $colorLight
-    h1, h2, h3, a, p
+    h1, h2, h3, a, p, .btnback
         color:  rgb(151, 170, 180)
     code
         color: #ffe600
+    .btnback
+        background: $colorMain
 
 
 .ArticlesDetailsruby, .ArticlesDetailsImageruby, .ArticlesDetailsTextruby, .ArticlesDetailsCoderuby
     background: $COLACCENT
     color: $COLSECOND
-    h1, h2, h3, a, p
+    h1, h2, h3, a, p, .btnback
         color: $COLSECOND
     code
         color: #e6db7b
+    .btnback
+        background: $COLACCENT
+
 
 
 

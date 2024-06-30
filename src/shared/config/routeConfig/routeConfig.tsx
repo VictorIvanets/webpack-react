@@ -37,7 +37,6 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ARTICLE]: '/article',
     [AppRoutes.ARTICLE_DETAILS]: '/article_datails', // + :id
     [AppRoutes.NOTFOUND]: '/*',
-
 }
 
 export const routerConfig: Record<AppRoutes, AppRouterProps> = {
