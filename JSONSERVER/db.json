@@ -70,12 +70,6 @@
       "id": "QS_BL3h"
     },
     {
-      "text": "ADD NEW COMMENT",
-      "id": "54441",
-      "articleId": "1",
-      "userId": "1"
-    },
-    {
       "text": "ADD PITON",
       "id": "86925",
       "articleId": "2",
@@ -431,7 +425,6 @@
         }
       ]
     },
-
     {
       "id": "5",
       "title": "JavaScript NEWS",
@@ -457,7 +450,6 @@
         }
       ]
     },
-
     {
       "id": "6",
       "title": "JavaScript NEWS NEWS2",
@@ -483,7 +475,6 @@
         }
       ]
     },
-
     {
       "id": "6",
       "title": "Pitons NEWS NEWS2",
@@ -508,8 +499,7 @@
           ]
         }
       ]
-    }, 
-
+    },
     {
       "id": "7",
       "title": "SQL NEWS",
@@ -559,7 +549,7 @@
           ]
         }
       ]
-    }, 
+    },
     {
       "id": "9",
       "title": "MONGO TEST",
@@ -585,7 +575,5 @@
         }
       ]
     }
-
-
   ]
 }
