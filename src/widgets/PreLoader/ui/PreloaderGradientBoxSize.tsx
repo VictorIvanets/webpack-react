@@ -6,3 +6,11 @@ export function PreLoaderGradientBox (){
     
     
 }
+
+export function PreLoaderGradientBox90deg (){
+
+    return <div className ="preloaderboxgradsize90deg">
+        <div className="preloadergradsize90deg"></div></div>
+    
+    
+}

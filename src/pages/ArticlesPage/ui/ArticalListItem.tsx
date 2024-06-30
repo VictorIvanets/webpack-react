@@ -1,21 +1,19 @@
 import { useTheme } from "app/Providers/Theme/useTheme";
-import { AxiosError } from "axios";
 import { useTranslation } from "react-i18next";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import className from "shared/lib/helpers/classNames/classNames";
 import { Article, ArticleBlockType, ArticleView } from "../articleTypes/articleTypes";
-import { $api } from "shared/api/api";
-import { useState, useEffect, memo} from "react";
-import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";
+import {memo} from "react";
 
 
 export interface ArticalListItemProps{
     article: Article
     view: ArticleView
+    ref: any
 }
 
 
-export const ArticalListItem = memo(({article, view}:ArticalListItemProps) => {
+export const ArticalListItem = memo(({article, view, ref}:ArticalListItemProps) => {
     const {theme} = useTheme()
     const {t} = useTranslation()
 
@@ -47,6 +45,7 @@ export const ArticalListItem = memo(({article, view}:ArticalListItemProps) => {
                 <p className="mb1">{article.subtitle}</p>
                 <p className="mb1">{article.type.join(', ')}</p>
                 <p className="mb1 fontsize1rem">{textBlock[0]}</p>
+                <p ref = {ref}></p>
             </div>
          
         </div>
