@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DinamicModulLoader, { ReducerList } from "shared/lib/DinamicModulLoader/DinamicModulLoader";
 import { commentSliceReduser, getComments } from "widgets/Comment/model/CommentSlice";
 import { AppThunkDispatchData } from "shared/lib/helpers/AppDispatch/AppDispath";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useCallback, useEffect, useRef, useState,UIEvent } from "react";
 import { fetchComments } from "widgets/Comment/model/fetchComments";
 import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";
 import { UseInfiniteScroll } from "shared/lib/useInfiniteScroll/useInfiniteScroll";
@@ -43,10 +43,8 @@ export const ArticlesDetailsPage = (props:ArticlesDetailsPageProps) => {
         wrapperRef,
         callback: ()=>{
             setViewComments(true)
-            console.log('COMMENTS')
         }
     })
-
 
 
     useEffect(()=>{ 
@@ -54,11 +52,21 @@ export const ArticlesDetailsPage = (props:ArticlesDetailsPageProps) => {
     },[viewComments, dispatchData, id, updateComments === true])
 
 
+    // const onScroll = useCallback((e: UIEvent<HTMLDivElement>)=>{
+    //   console.log("scrolle", e.currentTarget.scrollTop)
+    // },[])
+
+
     return (
         <DinamicModulLoader reducers={reducer} removeAfterUnmount>
-              <div className={className('artidetapage', {artidetapagedark: (theme === "dark" ? true : false), artidetapageruby: (theme === "ruby" ? true : false)}, [])}>
-                <div ref={wrapperRef}  className="artidetapage__content">
-                  <ArticlesDetails id={id}/>
+              <div 
+              
+              className={className('artidetapage', {artidetapagedark: (theme === "dark" ? true : false), artidetapageruby: (theme === "ruby" ? true : false)}, [])}>
+                <div 
+                // onScroll={onScroll}
+                ref={wrapperRef}  className="artidetapage__content">
+                  <ArticlesDetails
+                   id={id}/>
                     <div ref={triggerRef}></div>
                     <h2 className="mb1">{t("comments")}</h2>
                       

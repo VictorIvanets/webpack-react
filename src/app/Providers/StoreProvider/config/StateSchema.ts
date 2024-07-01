@@ -10,6 +10,11 @@ import { CommentSchema } from "widgets/Comment";
 import { CommentProfileSchema, addCommentSchema } from "widgets/Comment/CommentTypes/commentsTypes";
 
 
+export type OptionalRecord<K extends keyof any, T> = {
+    [P in K]?: T
+}
+
+export type MountedReducer = OptionalRecord<StateSchemaKey, boolean>
 
 export interface StateSchema {
 
@@ -31,6 +36,7 @@ export interface ReducerManager {
     reduce: (state: StateSchema, action: Action) => StateSchema
     add: (key: StateSchemaKey, reducer: Reducer) => any
     remove: (key: StateSchemaKey) => any
+    getMountedReducer: ()=> MountedReducer
 }
 
 

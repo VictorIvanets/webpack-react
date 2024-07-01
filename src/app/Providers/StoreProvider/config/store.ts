@@ -9,7 +9,10 @@ import { NavigateOptions, To } from 'react-router-dom'
 
 
 
-export function createReduxStore(initialState?: StateSchema, navigate?: (to: To, options?: NavigateOptions)=> void) {
+export function createReduxStore(
+    initialState?: StateSchema,
+    navigate?: (to: To, options?: NavigateOptions)=> void
+) {
 
     const rootReduser: ReducersMapObject<StateSchema> = {
         user: userReduser,

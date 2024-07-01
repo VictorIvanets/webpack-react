@@ -97,8 +97,12 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
 
 
 
+
+
+
     return <DinamicModulLoader reducers={reducers} removeAfterUnmount = {true}>
-        <div className={className('ArticlesDetails', {ArticlesDetailsdark: (theme === "dark" ? true : false), ArticlesDetailsruby: (theme === "ruby" ? true : false)}, [])}>
+        <div 
+        className={className('ArticlesDetails', {ArticlesDetailsdark: (theme === "dark" ? true : false), ArticlesDetailsruby: (theme === "ruby" ? true : false)}, [])}>
 
         <div className={className('artidetapage__header', {artidetapagedark__header: (theme === "dark" ? true : false), artidetapageruby__header: (theme === "ruby" ? true : false)},  [])}>
             <h1 className='margin1'>{contentHeader}</h1>
@@ -106,7 +110,7 @@ export const ArticlesDetails = memo(({id}: ArticlesDetailsProps) => {
          
             <div className="ArticlesDetails__content">
             <Button className='btnback' onClick={()=>navigate(-1)}>BACK</Button>
-                {content}  
+            {content}  
             </div>
         
 

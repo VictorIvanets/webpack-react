@@ -42,12 +42,14 @@ export const MainPage = memo(() => {
 
 
   return (
-      <div className={className('artipage', {artipagedark: (theme === "dark" ? true : false), artipageruby: (theme === "ruby" ? true : false)}, [])}>
+      <div className={className('mainpage', {artipagedark: (theme === "dark" ? true : false), artipageruby: (theme === "ruby" ? true : false)}, [])}>
 
-      <div className={className('artipage__header', {artipagedark__header: (theme === "dark" ? true : false), artipageruby__header: (theme === "ruby" ? true : false)},  [])}>
+      <div className={className('mainpage__header', {artipagedark__header: (theme === "dark" ? true : false), artipageruby__header: (theme === "ruby" ? true : false)},  [])}>
           <h1 className='margin1'> {t("ARTICLES")}</h1>
       </div>
+      <div className="mainpage__content">
       {stateArt ? stateArt : <PreLoaderGradient/>}
+      </div>
       </div>
   );
   

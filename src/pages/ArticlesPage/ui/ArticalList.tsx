@@ -61,14 +61,15 @@ export const ArticalList = memo(({articles, isLoading, view, addArticles, allArt
 
     const renderArticle = (article: Article)=> {
         return (
-            <ArticalListItem article = {article} view={view}/>
+            <ArticalListItem key={article.id} article = {article} view={view}/>
             )
     }
 
 
   
     return (
-        <div className={className('ArticalList', {ArticalListdark: (theme === "dark" ? true : false), ArticalListruby: (theme === "ruby" ? true : false)}, [])}>
+        <div 
+        className={className('ArticalList', {ArticalListdark: (theme === "dark" ? true : false), ArticalListruby: (theme === "ruby" ? true : false)}, [])}>
             <div ref={ref1}></div>
             {articles ? articles.map(renderArticle) : <PreLoaderGradient/>}
             

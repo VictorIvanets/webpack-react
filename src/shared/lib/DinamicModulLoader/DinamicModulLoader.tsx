@@ -26,10 +26,15 @@ const {children, reducers, removeAfterUnmount} = props
 const store = useStore() as ReduxStoreManager
 
 useEffect(()=>{
+const mountedReducer = store.reducerManager.getMountedReducer()
 
 Object.entries(reducers).forEach(([name, reducer])=>{
-    store.reducerManager.add(name as StateSchemaKey, reducer)
-    dispatch({type: `@INIT ${name} REDUCER`})
+    const mounted = mountedReducer[name as StateSchemaKey]
+    if (!mounted) {
+        store.reducerManager.add(name as StateSchemaKey, reducer)
+        dispatch({type: `@INIT ${name} REDUCER`})
+    }
+
 })
 
 
