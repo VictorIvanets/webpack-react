@@ -1,44 +1,31 @@
 import { useTheme } from "app/Providers/Theme/useTheme"
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { Article } from "pages/ArticlesPage/articleTypes/articleTypes";
 import { MouseEventHandler, memo, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { NavLink } from "react-router-dom";
 import { $api } from "shared/api/api";
 import { className } from "shared/lib/helpers/classNames/classNames"
+import { useDataFetch } from "shared/lib/helpers/useDataFetch/useDataFetch";
 import { PreLoaderGradient } from "widgets/PreLoader/ui/PreloaderGradient";
 
 
 export const MainPage = memo(() => {
   const {theme} = useTheme()
   const {t} = useTranslation()
-  const [data, setData] = useState(null)
 
-  const fethArtical = async () => {
-      try {
-          const {data} = await $api.get<Article[]>(`/news`) 
-         
-              setData(data)
+  const [datafetch, _isLoading, _error, status] = useDataFetch("http://localhost:8000/news",
+    localStorage.getItem('user') || null
+  )
 
-      } catch(e) {
-          if (e instanceof AxiosError){
-              console.log(e.message)
-          }
-          return
-      }
-  }
-
-  useEffect(()=>{
-      fethArtical()
-  }, [])
 
   const stateArt = 
-      data && data.map((data: Article, index: number)=>{
+  datafetch.length ? datafetch.map((data: Article, index: number)=>{
       return <NavLink key={data.title} className="artipage__link margin1" to={`/article_datails/${index+1}`}>
           <img className="artipage__img" src={data.img} alt="art" />
           {data.title}
           </NavLink>
-  })
+  }) : []
 
 
   return (
@@ -48,7 +35,9 @@ export const MainPage = memo(() => {
           <h1 className='margin1'> {t("ARTICLES")}</h1>
       </div>
       <div className="mainpage__content">
-      {stateArt ? stateArt : <PreLoaderGradient/>}
+
+      {stateArt.length ? stateArt : status ? <h1>{status === 403 ? `НЕ АВТОРИЗОВАНО ${status}`: `НІЧОГО НЕ ЗНАЙДЕНО ${status}`}</h1> : <PreLoaderGradient/>}
+
       </div>
       </div>
   );
